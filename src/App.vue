@@ -1,6 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <HelloWorld />
+  </div>
+  <div>
+    <button @click="toggleChange">
+      <span v-if="!show">Show</span>
+      <span v-if="show">Hide</span>
+    </button>
+    <p v-if="show" >this is the toggle paragraph.</p>
+  </div>
+  
 </template>
 
 <script>
@@ -10,6 +19,16 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data(){
+    return{
+      show: true,
+    }
+  },
+  methods:{
+    toggleChange(){
+      this.show=!this.show
+    }
   }
 }
 </script>
