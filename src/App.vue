@@ -1,33 +1,42 @@
 <template>
   <div>
-    <HelloWorld />
-  </div>
-  <div>
-    <button @click="toggleChange">
-      <span v-if="!show">Show</span>
-      <span v-if="show">Hide</span>
-    </button>
-    <p v-if="show" >this is the toggle paragraph.</p>
+    <button @click="toggleChange">click to open popup</button>
+    <div v-if="show" >
+      <HelloWorld @close="toggleChange">
+        <p>Slut template</p>
+      </HelloWorld>
+    </div>
+    <button @click="start" :disabled="isPlaying">play</button>
+    <Modal v-if="isPlaying" :delay="delay"/>
   </div>
   
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Modal
   },
   data(){
     return{
-      show: true,
+      show: false,
+      isPlaying: false,
+      delay: null
     }
   },
   methods:{
     toggleChange(){
       this.show=!this.show
+    },
+    start(){
+      this.delay = 2000 + Math.random() * 5000
+      this.isPlaying = true
+      console.log(this.delay)
     }
   }
 }
@@ -42,4 +51,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>
