@@ -1,12 +1,15 @@
 @import '_variable.scss';
 @import '_navbar.scss';
-@import '_hover.scss';
+@import '_expc.scss';
 
 * {
     box-sizing:border-box;
     padding:0;
     margin:0;
 
+}
+h4{
+    margin-bottom: 10px;
 }
 p{
     color: $main;
@@ -15,5 +18,10 @@ html{
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
   }
+
+ul li{
+    list-style: none;
+}
+
+@import '_media.scss';

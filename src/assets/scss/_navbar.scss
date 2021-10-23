@@ -2,35 +2,97 @@
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
-
+.fa{
+  margin-left: 10px;
+}
+.hidden{
+  display: none;
+}
 .navbar {
   position: relative;
   display: flex;
-  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  // flex-wrap: wrap; allow us to do the line break for collapsing content
   align-items: center;
   justify-content: space-between; // space out brand from logo
   padding:0 20px;
-  box-shadow: 0 1px 2px 0px $shadow-color;
+  border-bottom: 1px solid $border-color;
+  //margin-bottom: 63px;
+}
 
+// Navbar brand
+//
+// Used for brand, project, or site names.
+
+.nav-brand {
+  font-size: 20px;
+  a{
+    text-decoration: none;
+  }
+}
+.burger{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  &:hover{
+    background-color: #000000;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+}
+.burger-line {
+  width: 1em;
+  height: 2px;
+  //margin-bottom: 6px;
+  background:$main;
+}
+
+
+// Navbar nav
+//
+// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;  //cannot use `inherit` to get the `.navbar`s value
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    border-bottom: transparent 1px solid;
+    transition: 0.4s;
+    
+    .nav-link {
+      padding:20px;
+      text-decoration: none;
+      color:$main;
+      
+      &:hover{
+        color: $active;
+      }
+    }
+  
+    &:hover,&.active{
+      border-bottom: $active 1px solid;
+      cursor: pointer;
+    }
+  }
   .dropdown-wrapper{
     position:absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
     left: 0;
     top: 63px;
+    border-bottom: 1px solid $border-color;
+    transition: 0.4s ease;
 
-    .dropdown{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      box-shadow: 0 1px 2px 0px $shadow-color;
-  
       .dropdown-item {
-        display: block;
         transition: 0.4s;
-        max-width: 100%; // For `<button>`s
+        max-width: 100%;
         color: $main;
-        padding: 10px 30px;
-        border-bottom: transparent 3px solid;
+        padding: 13px 30px;
         cursor: pointer;
         a{
           text-decoration: none;
@@ -39,118 +101,9 @@
         &.active,
         &:active,&:hover {
           color: $active;
-          border-bottom: $active 3px solid;
+          //border-bottom: $active 3px solid;
         }
       }
-    }
-  }
-}
-
-// Navbar brand
-//
-// Used for brand, project, or site names.
-
-.navbar-brand {
-  display: inline-block;
-  padding: 20px;
-  margin-right: 20px;
-  font-size: 20px;
-  line-height: inherit;
-  white-space: nowrap;
-}
-
-// Navbar nav
-//
-// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
-
-.navbar-nav {
-  display: flex;
-  flex-direction: inherit; // cannot use `inherit` to get the `.navbar`s value
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-    border-bottom: transparent 3px solid;
-    transition: 0.4s;
-    
-    .nav-link {
-      padding:20px;
-      text-decoration: none;
-      color:$main;
-      &:hover{
-        color: $active;
-      }
-    }
-  
-    &:hover,&.active{
-      border-bottom: $active 3px solid;
-      cursor: pointer;
-    }
-  }
-}
-
-
-
-// Responsive navbar
-//
-// Custom styles for responsive collapsing and toggling of navbar contents.
-// Powered by the collapse Bootstrap JavaScript plugin.
-
-// When collapsed, prevent the toggleable navbar contents from appearing in
-// the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
-// on the `.navbar` parent.
-.navbar-collapse {
-  flex-basis: 100%;
-  flex-grow: 1;
-  // For always expanded or extra full navbars, ensure content aligns itself
-  // properly vertically. Can be easily overridden with flex utilities.
-  align-items: center;
-}
-
-// Button for toggling the navbar when in its collapsed state
-.navbar-toggler {
-  padding: 10px;
-  line-height: 1;
-  background-color: transparent; // remove default button style
-  border: $main solid transparent; // remove default button style
-
-  //@include hover-focus {
-   // text-decoration: none;
-  //}
-
-  // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
-  }
-}
-
-// Keep as a separate element so folks can easily override it with another icon
-// or image file as needed.
-.navbar-toggler-icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
-}
-
-
-
-// Navbar themes
-//
-// Styles for switching between navbars with light or dark background.
-
-// Dark links against a light background
-.navbar {
-  .navbar-brand {
-    color: $main;
-  }
-
-  .navbar-toggler {
-    color: $main;
-    border-color: $active 1px solid;
   }
 }
 

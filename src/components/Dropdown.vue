@@ -1,16 +1,40 @@
 <template>
 <div class="dropdown-wrapper">
-    <div class="dropdown">
-    <div v-bind:key="project.id" v-for="project in projects" class="dropdown-item" >
-        <router-link :to="{path:project.link}">{{project.projectTitle}}</router-link>
+    <div :key="li.id" v-for="li in dropdown" class="dropdown-item" >
+        <router-link :to="{path:li.path}">{{li.title}}</router-link>
     </div>
-</div>
+    
 </div>
 </template>
 
 <script>
 export default {
 name:'Dropdown',
-props:['projects'],
+data(){ 
+      return{
+        dropdown:[
+          {
+            id:1,
+            title:'ProjectA',
+            path:'/UIUX/projectA'
+          },
+          {
+            id:2,
+            title:'ProjectB',
+            path:'/UIUX/projectB'
+          },
+          {
+            id:3,
+            title:'ProjectC',
+            path:'/UIUX/projectC'
+          },
+          {
+            id:4,
+            title:'ProjectD',
+            path:'/UIUX/projectD'
+          }
+        ]
+      }
+    },
 }
 </script>

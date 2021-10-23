@@ -1,15 +1,22 @@
 <template>
   <nav class="navbar">
-    <div class="nav-brand">Weimei</div>
+    <div class="nav-brand">
+      <router-link :to="{name:'Intro'}">Weimei</router-link>
+      <!-- <div class="burger">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      </div> -->
+    </div>
+      
     <ul class="navbar-nav">
       <li class="nav-item">
-      <router-link class="nav-link" :to="{name:'GraphicDesign'}">Graphic design</router-link>
+        <router-link class="nav-link" :to="{name:'GraphicDesign'}">Graphic Design</router-link>
       </li>
-      <li class="nav-item">
-        <div class="nav-link" @click="isOpen = !isOpen">UIUX projects</div>
-          <i class="fa fa-caret-down"></i>
+      <li class="nav-item" ref="menu" @click="openClose"><!-- @mouseover="isOpen=true" @mouseleave="isOpen=false" -->
+        <div class="nav-link">UI UX<i class="fa fa-caret-down"></i></div>
+        <Dropdown v-if="isOpen" />
       </li>
-      <Dropdown :projects="projects" v-if="isOpen"/>
       <li class="nav-item">
         <router-link class="nav-link" :to="{name:'Experience'}">Experience</router-link>
       </li>
@@ -25,32 +32,47 @@ export default {
     components:{
       Dropdown
     },
-    data(){
+    data(){ 
       return{
-        isOpen:false,
-        projects:[
-          {
-            id:1,
-            projectTitle:"project1",
-            link:"UIUX"
-          },
-          {
-            id:2,
-            projectTitle:"project2",
-            link:"#"
-          },
-          {
-            id:3,
-            projectTitle:"project3",
-            link:"#"
-          },
-          {
-            id:4,
-            projectTitle:"project4",
-            link:"#"
-          }
-        ],
+        isOpen: false,
       }
+    },
+    methods:{
+      // slideIn(){
+      //   const burger=document.querySelector('.burger');
+      //   const navbar=document.querySelector('.navbar-nav');
+      //   // const navlink=document.querySelector('.nav-item a');
+      //   burger.addEventListener('click',()=>{
+      //     navbar.classList.toggle('nav-active')
+      //   })
+
+      //   navlink.on("click", function(){
+      //   navbar.hide();
+      //   });
+      // },
+      openClose() {
+      var _this = this
+      const closeListerner = (e) => {
+
+      if ( _this.catchOutsideClick(e, _this.$refs.menu ) )
+      window.removeEventListener('click', closeListerner) , _this.isOpen = false
+      }
+
+      window.addEventListener('click', closeListerner)
+      this.isOpen = !this.isOpen
+      
+      },
+      catchOutsideClick(event, dropdown)  {
+
+      // When user clicks menu — do nothing
+      if( dropdown == event.target )
+        this.isOpen = true
+
+      // When user clicks outside of the menu — close the menu
+      if (event.target !== dropdown && !dropdown.contains(event.target)) 
+        this.isOpen = false
+      }
+      
     }
 }
 </script>

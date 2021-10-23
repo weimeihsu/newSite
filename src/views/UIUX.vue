@@ -1,5 +1,8 @@
 <template>
-  <div>UIUX project</div>
+  <!-- <div>UIUX project</div>-->
+  {{this.$route.params.id}}
+  <router-view/>  
+  
 </template>
 
 <script>
