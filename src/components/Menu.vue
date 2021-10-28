@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="nav-brand">
-      <router-link :to="{name:'Intro'}">Weimei</router-link>
+      <router-link :to="{name:'Intro'}">Weimei's Design Collection</router-link>
       <!-- <div class="burger">
       <span class="burger-line"></span>
       <span class="burger-line"></span>

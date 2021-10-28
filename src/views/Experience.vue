@@ -1,9 +1,16 @@
 <template>
-  <section v-for="expc in expcs" :key="expc.id" class="expc">
-    <h2>{{expc.title}}</h2>
-    <span>{{expc.team}}</span>
-		<h3>{{expc.comp}}</h3>
-    <h4>{{expc.date}}</h4>
+  <section v-for="expc in expcs" :key="expc.id" class="container expc">
+    <div class="head">
+      <div class="left">
+        <img :src="expc.icon" :alt="expc.alt" />
+      </div>
+      <div class="right">
+        <h2>{{expc.title}}</h2>
+        <span>{{expc.team}}</span>
+        <h3>{{expc.comp}}</h3>
+        <h4>{{expc.date}}</h4>
+      </div>
+    </div>
     <ul>
       <li v-for="li in expc.list" :key="li">{{li.li}}</li>
     </ul>
@@ -19,7 +26,7 @@ export default {
           {
             id:1,
             date: 'May 2019 - Apr 2020',
-            icon:'img',
+            icon:require('@/assets/img/company-logo/c6.jpg'),
             title:'UI/UX Designer',
             dept:'Development Team',
             comp:'Bamboo Design and Development',
@@ -33,7 +40,7 @@ export default {
           {
             id:2,
             date: 'Jul 2015 - Apr 2019',
-            icon:'img',
+            icon:require('@/assets/img/company-logo/c5.jpg'),
             title:'Supervior',
             dept:'Creative Team',
             comp:'Corsair Components',
@@ -48,7 +55,7 @@ export default {
           {
             id:3,
             date: 'Sep 2014 - Jul 2015',
-            icon:'img',
+            icon:require('@/assets/img/company-logo/c4.jpg'),
             title:'Senior Create Designer',
             dept:'APAC Creative Team',
             comp:'NVIDIA',
@@ -63,7 +70,7 @@ export default {
           {
             id:4,
             date: 'Feb 2012 - Sep 2014',
-            icon:'img',
+            icon:require('@/assets/img/company-logo/c5.jpg'),
             title:'Supervior',
             dept:'Marketing Communication',
             comp:'Nu Skin Great China',
@@ -79,7 +86,7 @@ export default {
           {
             id:5,
             date: 'Mar 2010 - Sep 2012',
-            icon:'img',
+            icon:require('@/assets/img/company-logo/c2.jpg'),
             title:'Graphic Designer',
             dept:'Marketing Team',
             comp:'Wintec Industries',
@@ -101,7 +108,11 @@ export default {
 .expc{
   margin-bottom: 40px;
 }
-.box img{
-  max-width: 100%;
+.left img{
+  max-width: 70%;
+  margin-top: 0.5rem;
+}
+.head{
+  display: flex;
 }
 </style>
