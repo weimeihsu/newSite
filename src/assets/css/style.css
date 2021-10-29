@@ -6,6 +6,14 @@
   display: none;
 }
 
+.fixed-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: auto;
+  background: #ffffff;
+}
+
 .navbar {
   position: relative;
   display: -webkit-box;
@@ -19,6 +27,7 @@
           justify-content: space-between;
   padding: 0 20px;
   border-bottom: 1px solid #eaecef;
+  cursor: pointer;
 }
 
 .nav-brand {
@@ -160,8 +169,8 @@ ul li {
 .container {
   width: 100%;
   max-width: 960px;
-  margin: 20px auto;
-  padding: 0 1rem;
+  margin: 63px auto 20px;
+  padding: 1rem;
 }
 
 .flex-center {
@@ -181,7 +190,11 @@ ul li {
   .container {
     max-width: 720px;
   }
+  .navbar {
+    display: block;
+  }
   .navbar-nav {
+    width: 100%;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -193,6 +206,9 @@ ul li {
             flex-direction: column;
     -webkit-box-shadow: none;
             box-shadow: none;
+  }
+  .nav-brand {
+    padding: 20px;
   }
   .nav-item {
     text-align: center;

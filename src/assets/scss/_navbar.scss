@@ -8,6 +8,13 @@
 .hidden{
   display: none;
 }
+.fixed-wrapper{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: auto;
+  background: #ffffff;
+}
 .navbar {
   position: relative;
   display: flex;
@@ -16,6 +23,7 @@
   justify-content: space-between; // space out brand from logo
   padding:0 20px;
   border-bottom: 1px solid $border-color;
+  cursor: pointer;
   //margin-bottom: 63px;
 }
 

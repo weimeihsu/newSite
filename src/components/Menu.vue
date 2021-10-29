@@ -1,5 +1,6 @@
 <template>
-  <nav class="navbar">
+<div class="fixed-wrapper">
+<nav class="navbar">
     <div class="nav-brand">
       <router-link :to="{name:'Intro'}">Weimei's Design Collection</router-link>
       <!-- <div class="burger">
@@ -21,7 +22,8 @@
         <router-link class="nav-link" :to="{name:'Experience'}">Experience</router-link>
       </li>
     </ul> 
-  </nav>     
+  </nav>    
+</div>
 </template>
 
 <script>
@@ -80,4 +82,5 @@ export default {
 <style>
 @import '../assets/css/style.css';
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
 </style>

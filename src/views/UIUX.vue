@@ -1,13 +1,17 @@
 <template>
-  <!-- <div>UIUX project</div>-->
-  {{this.$route.params.id}}
+  <!-- {{this.$route.params.id}} -->
+  <Dropdown />
   <router-view/>  
   
 </template>
 
 <script>
+import Dropdown from '../components/Dropdown.vue';
 export default {
-    name:'UIUX'
+    name:'UIUX',
+    components:{
+      Dropdown,
+    }
 }
 </script>
 
