@@ -1,13 +1,15 @@
 <template>
-<section class="container flex-center">
+<section class="gallery flex-center">
   <div class="pagination">
     <span @click="goPrev"><i class="fa fa-angle-left" :class="{disabled: isDisable}"></i></span>
-    <span @click="goSlideIndex(index)" v-for="(slide, index) in slides" :key="slide.id" class="number" :class="[index===currentIndex ? 'current':'']" >{{index+1}}</span>
+    <!-- put this {{index+1}} inside the following span if i want to show numbers  -->
+    <span @click="goSlideIndex(index)" v-for="(slide, index) in slides" :key="slide.id" class="number" :class="[index===currentIndex ? 'current':'']" ></span>
     <span @click="goNext"><i class="fa fa-angle-right"></i></span>
+
   </div>
-  <div class="slides">
+  <div class="slides" :style="{with:slidesWidth+'px'}">
     <div class="slideInnerContainer" :style="{width:slideInnerWidth +'px',marginLeft: '-' + slideInnerMarginLeft + 'px'}">
-      <Slide :slides="slides"/>
+      <Slide :slides="slides" />
     </div> 
   </div>
 </section>
@@ -85,7 +87,6 @@ export default {
           }
         ],
         isDisable:false,
-        innerWidth:0,
         slideWidth:0,
         currentIndex:0,
       }
@@ -93,7 +94,7 @@ export default {
     methods:{
       goPrev(){
         if(this.currentIndex===0){
-          return 
+          return {isDisable:true}
         }
         this.currentIndex--
       },
@@ -115,6 +116,9 @@ export default {
       },
       slideInnerWidth(){
         return this.slideWidth * this.slides.length
+      },
+      slidesWidth(){
+        return this.slideWidth
       }
     },
     mounted(){
@@ -129,6 +133,11 @@ export default {
 </script>
 
 <style scoped>
+.gallery{
+  width: 960px;
+  margin: 63px auto 20px;
+  max-width: 100%;
+}
 .slides{
   overflow: hidden;
   max-width: 100%;
@@ -138,16 +147,20 @@ export default {
   display: flex;
 }
 .pagination{
-  margin-bottom: 10px;
-  margin-top: 1px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  display: flex;
+  height: 16px;
 }
 .pagination span{
   cursor: pointer;
 }
 .number{
-  margin: 0 0.5rem;
-  padding: 0 0.5rem;
-  border: 1px solid #eaecef;
+  margin: 8px 5px 2px;
+  padding: 0 3px;
+  border-radius: 20px;
+  background:#eaecef;
+  
 }
 .current{
   color: #ffffff;

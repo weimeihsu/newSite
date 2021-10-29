@@ -2,8 +2,12 @@
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
+a{
+  color:$active;
+}
 .fa{
   margin: 0 10px;
+  font-size: 14px !important;
 }
 .hidden{
   display: none;
