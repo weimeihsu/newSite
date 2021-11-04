@@ -17,8 +17,12 @@ const routes =[
         component: GraphicDesign
     },
     {
+        path:'/UIUX',
+        name:'UIUX',
+        component: UIUX,
+    },
+    {
         path:'/UIUX/:id',
-        //name:'UIUX',
         component: UIUX,
         children:[
             {

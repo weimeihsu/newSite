@@ -1,5 +1,5 @@
 <template>
-<section class="gallery flex-center">
+<section class="container flex-center">
   <div class="pagination">
     <span @click="goPrev"><i class="fa fa-angle-left" :class="{disabled: isDisable}"></i></span>
     <!-- put this {{index+1}} inside the following span if i want to show numbers  -->
@@ -9,7 +9,9 @@
   </div>
   <div class="slides" :style="{with:slidesWidth+'px'}">
     <div class="slideInnerContainer" :style="{width:slideInnerWidth +'px',marginLeft: '-' + slideInnerMarginLeft + 'px'}">
-      <Slide :slides="slides" />
+      <div class="slide" :style="{width:slideWidth +'px'}" v-for="slide in slides" :key="slide.id">
+        <Slide :slideitem="slide"/>
+      </div>
     </div> 
   </div>
 </section>
@@ -87,6 +89,7 @@ export default {
           }
         ],
         isDisable:false,
+        innerWidth:0,
         slideWidth:0,
         currentIndex:0,
       }
@@ -123,24 +126,26 @@ export default {
     },
     mounted(){
       this.slideWidth = this.$el.clientWidth
-    },
-    // attached(){
-    //    let slideWidth = this.$el.clientWidth
-    //    this.$set('slideWidth', slideWidth)
-    //    this.$set('innerWidth', slideWidth * this.slides.length)
-    // }
+    }
 }
 </script>
 
 <style scoped>
-.gallery{
-  width: 960px;
-  margin: 63px auto 20px;
-  max-width: 100%;
-}
 .slides{
   overflow: hidden;
   max-width: 100%;
+}
+.slide{
+    display: flex; 
+    /* flex-direction: column;
+    align-items: center; */
+    justify-content: center;
+    width: 100%;
+    
+}
+.slide img{
+    max-width: 100%;
+    height: fit-content;
 }
 .slideInnerContainer{
   transition: margin 0.4s ease-out;
@@ -155,12 +160,15 @@ export default {
 .pagination span{
   cursor: pointer;
 }
+.fa{
+  margin: 0 10px;
+  font-size: 14px !important;
+}
 .number{
   margin: 8px 5px 2px;
   padding: 0 3px;
   border-radius: 20px;
   background:#eaecef;
-  
 }
 .current{
   color: #ffffff;

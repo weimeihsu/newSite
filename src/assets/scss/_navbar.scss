@@ -5,13 +5,7 @@
 a{
   color:$active;
 }
-.fa{
-  margin: 0 10px;
-  font-size: 14px !important;
-}
-.hidden{
-  display: none;
-}
+
 .fixed-wrapper{
   position: fixed;
   top: 0;
@@ -31,15 +25,13 @@ a{
   //margin-bottom: 63px;
 }
 
-// Navbar brand
-//
-// Used for brand, project, or site names.
-
 .nav-brand {
   font-size: 20px;
-  a{
+  .router-link-active{
     text-decoration: none;
     color:$active;
+    border-bottom: none;
+    font-weight: bold;
   }
 }
 .burger{
@@ -68,11 +60,11 @@ a{
 .navbar-nav {
   display: flex;
   flex-direction: row;  //cannot use `inherit` to get the `.navbar`s value
+  cursor: pointer;
 
   .nav-item {
     display: flex;
     align-items: center;
-    border-bottom: transparent 1px solid;
     transition: 0.4s;
     
     .nav-link {
@@ -84,40 +76,31 @@ a{
         color: $active;
       }
     }
-  
-    &:hover,&.active{
-      border-bottom: $active 1px solid;
-      cursor: pointer;
-    }
   }
-  .dropdown-wrapper{
-    position:absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    left: 0;
-    top: 63px;
-    border-bottom: 1px solid $border-color;
-    transition: 0.4s ease;
-    background: rgba($color: #ffffff, $alpha: 1.0);
+}
+.router-link-active{
+  border-bottom: $active 1px solid;
+}
+.dropdown-wrapper{
+  position: fixed;
+  top: 64px;
+  border-bottom: 1px solid $border-color;
+  background: rgba($color: #ffffff, $alpha: 1.0);
 
-      .dropdown-item {
-        transition: 0.4s;
-        max-width: 100%;
-        color: $main;
-        padding: 13px 30px;
-        cursor: pointer;
-        a{
-          text-decoration: none;
-          color: inherit;
-        }
-        &.active,
-        &:active,&:hover {
-          color: $active;
-          //border-bottom: $active 3px solid;
-        }
+    .dropdown-item {
+      max-width: 100%;
+      color: $main;
+      display: flex;
+      a{
+        text-decoration: none;
+        color: inherit;
+        padding: 10px 30px;
+        font-size: 0.9rem;
       }
-  }
+      &:hover {
+      color: $active;
+      //border-bottom: $active 3px solid;
+      }
+    }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <!-- {{this.$route.params.id}} -->
+   <p>{{this.$route.params.id}} </p>
   <Dropdown />
   <router-view/>  
   

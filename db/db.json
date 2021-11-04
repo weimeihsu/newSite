@@ -3,7 +3,7 @@
         {
           "id":1,
           "date": "May 2019 - Apr 2020",
-          "icon":"https://i.ibb.co/FJrV6s5/S-19783727.jpg",
+          "icon":"https://raw.githubusercontent.com/weimeihsu/weimeihsu/main/S__19685395.jpg",
           "title":"UI/UX Designer",
           "dept":"Development Team",
           "comp":"Bamboo Design and Development",
@@ -17,7 +17,7 @@
         {
           "id":2,
           "date": "Jul 2015 - Apr 2019",
-          "icon":"@/assets/img/company-logo/c5.jpg",
+          "icon":"company-logo/c5.jpg",
           "title":"Supervior",
           "dept":"Creative Team",
           "comp":"Corsair components",
@@ -32,7 +32,7 @@
         {
           "id":3,
           "date": "Sep 2014 - Jul 2015",
-          "icon":"@/assets/img/company-logo/c4.jpg",
+          "icon":"company-logo/c4.jpg",
           "title":"Senior Create Designer",
           "dept":"APAC Creative Team",
           "comp":"NVidIA",
@@ -47,7 +47,7 @@
         {
           "id":4,
           "date": "Feb 2012 - Sep 2014",
-          "icon":"@/assets/img/company-logo/c5.jpg",
+          "icon":"company-logo/c5.jpg",
           "title":"Supervior",
           "dept":"Marketing Communication",
           "comp":"Nu Skin Great China",
@@ -63,7 +63,7 @@
         {
           "id":5,
           "date": "Mar 2010 - Sep 2012",
-          "icon":"@/assets/img/company-logo/c2.jpg",
+          "icon":"company-logo/c2.jpg",
           "title":"Graphic Designer",
           "dept":"Marketing Team",
           "comp":"Wintec Industries",

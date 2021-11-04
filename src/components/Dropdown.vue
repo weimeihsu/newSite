@@ -1,7 +1,7 @@
 <template>
 <div class="dropdown-wrapper">
     <div :key="li.id" v-for="li in dropdown" class="dropdown-item" >
-        <router-link :to="{path:li.path}">{{li.title}}</router-link>
+        <router-link class="dropdown-link" :to="{path:li.path}">{{li.title}}</router-link>
     </div>
     
 </div>
@@ -15,7 +15,7 @@ data(){
         dropdown:[
           {
             id:1,
-            title:'ProjectA',
+            title:'Single Sign-On',
             path:'/UIUX/projectA'
           },
           {
