@@ -1,6 +1,6 @@
 <template>
 <div class="dropdown-wrapper">
-    <div :key="li.id" v-for="li in dropdown" class="dropdown-item" >
+    <div v-for="(li, index) in dropdown" :key="index"  class="dropdown-item" >
         <router-link class="dropdown-link" :to="{path:li.path}">{{li.title}}</router-link>
     </div>
     
@@ -9,32 +9,14 @@
 
 <script>
 export default {
-name:'Dropdown',
-data(){ 
-      return{
-        dropdown:[
-          {
-            id:1,
-            title:'Single Sign-On',
-            path:'/UIUX/projectA'
-          },
-          {
-            id:2,
-            title:'ProjectB',
-            path:'/UIUX/projectB'
-          },
-          {
-            id:3,
-            title:'ProjectC',
-            path:'/UIUX/projectC'
-          },
-          {
-            id:4,
-            title:'ProjectD',
-            path:'/UIUX/projectD'
-          }
-        ]
+  name:'Dropdown',
+  data(){
+    return{}
+  },
+  computed:{
+    dropdown(){
+        return this.$store.state.uiuxImages
       }
-    },
+  },
 }
 </script>

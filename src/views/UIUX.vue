@@ -1,16 +1,18 @@
 <template>
-   <p>{{this.$route.params.id}} </p>
-  <Dropdown />
+  <uiuxDetail />
+ 
   <router-view/>  
   
 </template>
 
 <script>
-import Dropdown from '../components/Dropdown.vue';
+// import Dropdown from '../components/Dropdown.vue';
+import uiuxDetail from '../views/uiuxDetail.vue';
 export default {
     name:'UIUX',
     components:{
-      Dropdown,
+      // Dropdown,
+      uiuxDetail,
     }
 }
 </script>

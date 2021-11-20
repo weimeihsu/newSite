@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import GraphicDesign from '../views/graphicDesign/GraphicDesign'
 import UIUX from '../views/UIUX'
-import ProjectA from '../views/ProjectA'
+import uiuxDetail from '../views/uiuxDetail'
 import Experience from '../views/Experience'
 import Intro from '../views/Intro'
 
@@ -23,14 +23,8 @@ const routes =[
     },
     {
         path:'/UIUX/:id',
-        component: UIUX,
-        children:[
-            {
-                path:'',
-                name:'ProjectA',
-                component: ProjectA
-            }
-        ]
+        name:'uiuxDetail',
+        component: uiuxDetail,
     },
     {
         path:'/Experience',
