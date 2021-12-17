@@ -83,17 +83,17 @@ const store =  createStore({
       uiuxImages:[
         {
           id:1,
-          title:'Single Sign On',
-          path:'/UIUX/sso',
+          title:'SingleSignOn',
+          path:'/Uiux/sso',
           images: [
             { url: require('@/assets/img/uiux/csp/sso/sso-1.jpg'), alt: 'img-1' },
-            { url:  require('@/assets/img/uiux/csp/sso/sso-2.jpg'), alt: 'img-2' }
+            { url: require('@/assets/img/uiux/csp/sso/sso-2.jpg'), alt: 'img-2' }
           ]
         },
         {
           id:2,
           title:'Charts',
-          path:'/UIUX/chart',
+          path:'/Uiux/chart',
           images: [
             { url: require('@/assets/img/uiux/csp/chart/charts.png'), alt: 'img-1' },
             { url: require('@/assets/img/uiux/csp/chart/chart property.jpg'), alt: 'img-2' },
@@ -102,8 +102,8 @@ const store =  createStore({
         },
         {
           id:3,
-          title:'User Guide',
-          path:'/UIUX/userGuide',
+          title:'UserGuide',
+          path:'/Uiux/userGuide',
           images: [
             { url: require('@/assets/img/uiux/csp/chart/charts.png'), alt: 'img-1' },
             { url: require('@/assets/img/uiux/csp/chart/chart property.jpg'), alt: 'img-2' },

@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import GraphicDesign from '../views/graphicDesign/GraphicDesign'
-import UIUX from '../views/UIUX'
-import uiuxDetail from '../views/uiuxDetail'
-import Experience from '../views/Experience'
-import Intro from '../views/Intro'
+import GraphicDesign from '../views/graphicDesign/GraphicDesign';
+import Uiux from '../views/Uiux';
+import UiuxDetail from '../views/UiuxDetail';
+import Experience from '../views/Experience';
+import Intro from '../views/Intro';
 
 const routes =[
     {
@@ -17,19 +17,19 @@ const routes =[
         component: GraphicDesign
     },
     {
-        path:'/UIUX',
-        name:'UIUX',
-        component: UIUX,
+        path:'/Uiux',
+        name:'Uiux',
+        component: Uiux,
     },
     {
-        path:'/UIUX/:id',
-        name:'uiuxDetail',
-        component: uiuxDetail,
+        path:'/Uiux/:id',
+        name:'UiuxDetail',
+        component: UiuxDetail,
     },
     {
         path:'/Experience',
         name:'Experience',
-        component: Experience
+        component: Experience,
     }
 ]
 

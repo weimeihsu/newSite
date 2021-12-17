@@ -1,5 +1,7 @@
 <template>
+<div>{{experience}}</div>
   <section v-for="(expc, index) in expcs" :key="index" class="container expc">
+    
     <div class="head">
       <div class="left">
         <img :src="expc.icon" :alt="expc.alt" />
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import firedb from '@/firebase/firebaseinit'
 export default {
     name:'Experience',
     computed:{
@@ -25,6 +28,26 @@ export default {
         return this.$store.state.expcs
       }
     },
+    data(){
+      return{
+        // retrieve data from firebase and store here. 
+        experience:[]
+      }
+    },
+    created(){
+      firedb.collection('expcs').onSnapshot(res=> {
+        const changes = res.docChanges();
+
+        changes.forEach(change => {
+          if(change.type==='added'){
+            this.experience.push({
+              ...change.doc.data(),
+              id:change.doc.id
+            })
+          }
+        });
+      })
+    }
     // change to the following when deploy
     // mounted(){
     //   fetch('http://localhost:3000/expcs')

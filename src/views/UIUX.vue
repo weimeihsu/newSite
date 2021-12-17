@@ -1,22 +1,24 @@
 <template>
-  <uiuxDetail />
- 
-  <router-view/>  
+  <div class="container">
+    <UiuxDetail />
+    <!-- <router-view/>  -->
+  </div>  
+
+   
   
 </template>
 
 <script>
 // import Dropdown from '../components/Dropdown.vue';
-import uiuxDetail from '../views/uiuxDetail.vue';
+import UiuxDetail from './UiuxDetail.vue';
 export default {
-    name:'UIUX',
+    name:'Uiux',
     components:{
       // Dropdown,
-      uiuxDetail,
+      UiuxDetail,
     }
 }
 </script>
 
 <style>
-
 </style>

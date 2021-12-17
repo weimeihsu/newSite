@@ -1,7 +1,7 @@
 <template>
 <div class="dropdown-wrapper">
     <div v-for="(li, index) in dropdown" :key="index"  class="dropdown-item" >
-        <router-link class="dropdown-link" :to="{path:li.path}">{{li.title}}</router-link>
+        <router-link class="dropdown-link" :to="{name:'UiuxDetail', params:{id: li.title}}">{{li.title}}</router-link>
     </div>
     
 </div>

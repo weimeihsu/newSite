@@ -15,7 +15,7 @@
         <router-link class="nav-link" :to="{name:'GraphicDesign'}">Graphic Design</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{path:'/UIUX'}">UIUX</router-link>
+        <router-link class="nav-link" :to="{name:'Uiux'}">UIUX</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" :to="{name:'Experience'}">Experience</router-link>
