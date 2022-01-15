@@ -14,8 +14,7 @@
 </template>
 
 <script>
-
-import Dropdown from '../components/Dropdown.vue';
+import Dropdown from '../components/Dropdown.vue'
 export default {
     name:'UiuxDetail',
     components:{Dropdown},

@@ -1,12 +1,16 @@
 <template>
-    <section class="container flex-center">   
+    <section class="container">   
        
-        <img src="../assets/img/process.svg" alt="">
-        
-        <p> <span class="highlight">I'm WeiMei Hsu, an UI/UX designer. </span></p>
-        <p>My job is to collect and summarize ideas and convert them into visual forms that can improve the user experience.</p>
+        <div class="flex-center">
+        <span class="highlight">I'm WeiMei, a UI/UX designer. </span>
+        <p>My job is to collect and summarize ideas and convert them into visual forms that can communicate with target users.</p>
         <p>I like observing and thinking. Things happen in my life are my source of inspiration</p>
+        
+        <img src="../assets/img/process.svg" alt="">
         <!-- <p>This site collects most of my fine works, which can help illustrate my capability in design field. If you have any comments or feedback, feel free to contact me via <a href="mailto:weimei0928@gmail.com">email</a>.</p> -->
+        </div>
+        
+        
         
     </section>
 </template>
@@ -19,11 +23,20 @@ export default {
 
 <style scoped>
 img{
-    max-width: 80%;
-    margin: 10rem 0;
+    max-width: 55%;
+    margin: 3rem 0;
 }
 .highlight{
     color: #000000;
     font-size: 2rem;
+    margin-bottom: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin:0 auto;
 }
 </style>

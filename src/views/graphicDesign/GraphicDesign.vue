@@ -131,6 +131,9 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  margin: 63px auto 0;
+}
 .slides{
   overflow: hidden;
   max-width: 100%;

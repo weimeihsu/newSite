@@ -1,5 +1,4 @@
 a {
-  color: #000000;
   text-decoration: none;
 }
 
@@ -131,7 +130,7 @@ a {
 }
 
 h4 {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 p {
@@ -144,14 +143,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-ul li {
-  list-style: none;
-}
-
 .container {
   width: 100%;
   max-width: 960px;
-  margin: 63px auto 20px;
   padding: 1rem;
 }
 
