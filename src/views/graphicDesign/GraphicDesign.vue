@@ -1,12 +1,12 @@
 <template>
-<section class="container flex-center">
+<section class="gallery flex-center">
   <div class="pagination">
-    <span @click="goPrev"><i class="fa fa-angle-left" :class="{disabled: isDisable}"></i></span>
+    <span @click="goPrev" :class="{disabled: isDisable}">Prev</span>
     <!-- put this {{index+1}} inside the following span if i want to show numbers  -->
-    <span @click="goSlideIndex(index)" v-for="(slide, index) in slides" :key="slide.id" class="number" :class="[index===currentIndex ? 'current':'']" ></span>
-    <span @click="goNext"><i class="fa fa-angle-right"></i></span>
-
+    <!-- <span @click="goSlideIndex(index)" v-for="(slide, index) in slides" :key="slide.id" class="number" :class="[index===currentIndex ? 'current':'']" ></span> -->
+    <span @click="goNext">Next</span>
   </div>
+
   <div class="slides" :style="{with:slidesWidth+'px'}">
     <div class="slideInnerContainer" :style="{width:slideInnerWidth +'px',marginLeft: '-' + slideInnerMarginLeft + 'px'}">
       <div class="slide" :style="{width:slideWidth +'px'}" v-for="slide in slides" :key="slide.id">
@@ -131,41 +131,41 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  margin: 63px auto 0;
+.gallery{
+  margin: 100px auto 0;
+  position: relative;
 }
 .slides{
   overflow: hidden;
-  max-width: 100%;
+  width: 100%;
 }
 .slide{
     display: flex; 
-    /* flex-direction: column;
-    align-items: center; */
     justify-content: center;
-    width: 100%;
-    
 }
 .slide img{
-    max-width: 100%;
-    height: fit-content;
+    height: calc(100vh - 150px);
 }
 .slideInnerContainer{
   transition: margin 0.4s ease-out;
   display: flex;
 }
 .pagination{
-  margin-bottom: 15px;
-  margin-top: 10px;
-  display: flex;
-  height: 16px;
+  position: absolute;
+  top: -20px;
 }
 .pagination span{
+  color:#808080;
   cursor: pointer;
+  padding: 5px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #eaecef;
+  background: rgba(255, 255, 255, 0.5);
 }
-.fa{
-  margin: 0 10px;
-  font-size: 14px !important;
+.pagination span:hover{
+  border: 1px solid #000;
+  color: #000;
 }
 .number{
   margin: 8px 5px 2px;

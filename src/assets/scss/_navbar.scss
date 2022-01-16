@@ -4,6 +4,7 @@
 // other navbar variations.
 a{
   text-decoration: none;
+  color: $main;
 }
 
 .fixed-wrapper{
@@ -69,7 +70,7 @@ a{
     .nav-link {
       padding:20px;
       text-decoration: none;
-      color:$main;
+      // color:$main;
       
       &:hover{
         color: $active;
@@ -79,6 +80,7 @@ a{
 }
 .router-link-active{
   border-bottom: $active 1px solid;
+  color: $active;
   
 }
 .dropdown-wrapper{
@@ -93,7 +95,7 @@ a{
       display: flex;
       a{
         text-decoration: none;
-        color: inherit;
+        // color: inherit;
         padding: 10px 30px;
         font-size: 0.9rem;
       }

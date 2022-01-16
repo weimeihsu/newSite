@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: #808080;
 }
 
 .fixed-wrapper {
@@ -87,7 +88,6 @@ a {
 .navbar-nav .nav-item .nav-link {
   padding: 20px;
   text-decoration: none;
-  color: #808080;
 }
 
 .navbar-nav .nav-item .nav-link:hover {
@@ -96,6 +96,7 @@ a {
 
 .router-link-active {
   border-bottom: #000000 1px solid;
+  color: #000000;
 }
 
 .dropdown-wrapper {
@@ -113,7 +114,6 @@ a {
 
 .dropdown-wrapper .dropdown-item a {
   text-decoration: none;
-  color: inherit;
   padding: 10px 30px;
   font-size: 0.9rem;
 }
