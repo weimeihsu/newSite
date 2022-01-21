@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import Slide from './Slide.vue';
 export default {
     name:'GraphicDesign',
@@ -111,7 +112,8 @@ export default {
       },
       goSlideIndex(index){
         this.currentIndex = index
-      }
+      },
+      ...mapActions(['GET_GRAPHIC_DESIGN'])
     },
     computed:{
       slideInnerMarginLeft(){
@@ -122,11 +124,15 @@ export default {
       },
       slidesWidth(){
         return this.slideWidth
-      }
+      },
+      ...mapState(['graphicDesignFB']),
     },
     mounted(){
       this.slideWidth = this.$el.clientWidth
-    }
+    },
+    created(){
+      this.GET_GRAPHIC_DESIGN();
+    },
 }
 </script>
 

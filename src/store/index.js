@@ -5,7 +5,9 @@ import firedb from '../firebase/firebaseinit'
 const store =  createStore({
     state: {
       expcsFB:[],
+      graphicDesignFB:[],
       expcsLoaded:null,
+      graphicDesignLoaded:null,
       uiuxImages:[
         {
           id:1,
@@ -43,10 +45,17 @@ const store =  createStore({
     mutations: {
       SET_EXPCS_DATA(state, payload){
         state.expcsFB.push(payload);
-        console.log(state.expcsFB);
+        // console.log(state.expcsFB);  check if data is retrieved from firebase
       },
       EXPCS_LOADED(state){
         state.expcsLoaded = true;
+      },
+      SET_GRAPHIC_DESIGN_DATA(state, payload){
+        state.graphicDesignFB.push(payload);
+        console.log(state.graphicDesignFB);
+      },
+      GRAPHIC_DESIGN_LOADED(state){
+        state.graphicDesignLoaded = true;
       }
     },
     actions: {
@@ -69,6 +78,21 @@ const store =  createStore({
           }
         });
         commit('EXPCS_LOADED');
+      },
+      async GET_GRAPHIC_DESIGN({commit,state}){
+        const getData = firedb.collection('graphicDesign');
+        const result = await getData.get();
+        result.forEach( doc => {
+          if(!state.graphicDesignFB.some(graphicDesignSet => graphicDesignSet.id === doc.id)){
+            const data = {
+              id: doc.id,
+              title: doc.data().title,
+              img: doc.data().img,
+            };
+            commit("SET_GRAPHIC_DESIGN_DATA", data);
+          }
+        });
+        commit('GRAPHIC_DESIGN_LOADED');
       } 
     },
     modules: {
