@@ -38,9 +38,13 @@ const store =  createStore({
             { url: require('@/assets/img/uiux/csp/chart/chart data.jpg'), alt: 'img-2' }
           ]
         },
-      ]
+      ],
+      slidesLength: null
     },
     getters: {
+      slideLength(state){
+        return state.graphicDesignFB.length
+      }
     },
     mutations: {
       SET_EXPCS_DATA(state, payload){
@@ -52,10 +56,11 @@ const store =  createStore({
       },
       SET_GRAPHIC_DESIGN_DATA(state, payload){
         state.graphicDesignFB.push(payload);
-        console.log(state.graphicDesignFB);
+        // console.log(state.graphicDesignFB);
       },
       GRAPHIC_DESIGN_LOADED(state){
         state.graphicDesignLoaded = true;
+        state.slidesLength = state.graphicDesignFB.length;
       }
     },
     actions: {

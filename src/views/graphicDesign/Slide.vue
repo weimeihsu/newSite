@@ -1,5 +1,5 @@
 <template>
-    <img :src="slideitem.src" :alt="slideitem.alt" />
+    <img :src="slideitem.img" :alt="slideitem.title" />
     <!-- <p>{{slide.title}}</p> -->
 </template>
 
@@ -9,7 +9,6 @@ export default {
     props:['slideitem'],
     data(){
         return{
-            
         }
     } 
 }
