@@ -6,11 +6,7 @@
 <script>
 export default {
   name: 'Slide',
-  props: ['slideitem'],
-  data () {
-    return {
-    }
-  }
+  props: ['slideitem']
 }
 </script>
 <style scoped>

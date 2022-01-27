@@ -27,10 +27,6 @@ export default {
   computed: {
     ...mapState(['expcsFB'])
   },
-  data () {
-    return {
-    }
-  },
   created () {
     this.GET_EXPCS()
   },

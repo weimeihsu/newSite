@@ -88,20 +88,22 @@ a{
   // top: 64px;
   border-bottom: 1px solid $border-color;
   background: rgba($color: #ffffff, $alpha: 1.0);
+  margin-right: 2rem;
 
     .dropdown-item {
-      max-width: 100%;
-      color: $main;
-      display: flex;
+      margin-bottom: 5px;
       a{
         text-decoration: none;
-        // color: inherit;
-        padding: 10px 30px;
         font-size: 0.9rem;
-      }
-      &:hover {
-      color: $active;
-      //border-bottom: $active 3px solid;
+        color: $main;
+        padding: 10px 0 5px 0;
+        display: flex;
+        border-bottom: transparent 1px solid;
+        &:hover {
+          border-bottom: $active 1px solid;
+          cursor: pointer;
+          color: $active;
+          }
       }
     }
 }

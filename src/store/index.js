@@ -6,8 +6,10 @@ const store = createStore({
   state: {
     expcsFB: [],
     graphicDesignFB: [],
+    uiuxFB: [],
     expcsLoaded: null,
     graphicDesignLoaded: null,
+    uiuxLoaded: null,
     uiuxImages: [
       {
         id: 1,
@@ -30,8 +32,8 @@ const store = createStore({
       },
       {
         id: 3,
-        title: 'UserGuide',
-        path: '/Uiux/userGuide',
+        title: 'App Studio',
+        path: '/Uiux/AppStudio',
         images: [
           { url: require('@/assets/img/uiux/csp/chart/charts.png'), alt: 'img-1' },
           { url: require('@/assets/img/uiux/csp/chart/chart property.jpg'), alt: 'img-2' },
@@ -61,6 +63,13 @@ const store = createStore({
     GRAPHIC_DESIGN_LOADED (state) {
       state.graphicDesignLoaded = true
       state.slidesLength = state.graphicDesignFB.length
+    },
+    SET_UIUX_DATA (state, payload) {
+      state.uiuxFB.push(payload)
+      // console.log(state.uiuxFB)
+    },
+    UIUX_LOADED (state) {
+      state.uiuxLoaded = true
     }
   },
   actions: {
@@ -98,9 +107,23 @@ const store = createStore({
         }
       })
       commit('GRAPHIC_DESIGN_LOADED')
+    },
+    async GET_UIUX ({ commit, state }) {
+      const getData = firedb.collection('uiux')
+      const result = await getData.get()
+      result.forEach(doc => {
+        if (!state.uiuxFB.some(uiuxSet => uiuxSet.id === doc.id)) {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            path: doc.data().path,
+            img: doc.data().img
+          }
+          commit('SET_UIUX_DATA', data)
+        }
+      })
+      commit('UIUX_LOADED')
     }
-  },
-  modules: {
   }
 })
 export default store
