@@ -1,6 +1,5 @@
 <template>
-<section class="container">
-    <Dropdown />
+<section>
     <div class="gallery">
         <!-- <p>this is paramater id {{$route.params.id}} </p> -->
         <div class="gallery-item" v-for="(img, index) in uiuxImages" :key="index">
@@ -14,10 +13,8 @@
 </template>
 
 <script>
-import Dropdown from '../components/Dropdown.vue'
 export default {
   name: 'UiuxDetail',
-  components: { Dropdown },
   data () {
     return {
       // uiuxImages:[]
