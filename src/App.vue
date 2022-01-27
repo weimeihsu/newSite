@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import Menu from './components/Menu.vue';
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
   components: {
     Menu
-  },
+  }
 }
 </script>
 
-<style> 
+<style>
 
 </style>

@@ -16,18 +16,18 @@
 <script>
 import Dropdown from '../components/Dropdown.vue'
 export default {
-    name:'UiuxDetail',
-    components:{Dropdown},
-    data(){
-        return{
-            // uiuxImages:[]
-        }
-    },
-    computed:{
-      uiuxImages(){
-        return this.$store.state.uiuxImages
-      }
-    },
+  name: 'UiuxDetail',
+  components: { Dropdown },
+  data () {
+    return {
+      // uiuxImages:[]
+    }
+  },
+  computed: {
+    uiuxImages () {
+      return this.$store.state.uiuxImages
+    }
+  }
 }
 </script>
 <style scoped>

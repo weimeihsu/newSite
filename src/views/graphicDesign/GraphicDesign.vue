@@ -1,10 +1,10 @@
 <template>
 <section class="gallery flex-center">
   <div class="pagination">
-    <span @click="goPrev" :class="{disabled: isDisable}">Prev</span>
-    <!-- put this {{index+1}} inside the following span if i want to show numbers  -->
-    <!-- <span @click="goSlideIndex(index)" v-for="(slide, index) in slides" :key="slide.id" class="number" :class="[index===currentIndex ? 'current':'']" ></span> -->
-    <span @click="goNext">Next</span>
+    <button @click="goPrev" :class="{disabled: isDisable}" class="arrow">
+      <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg>
+    </button>
+    <button @click="goNext" :class="{disabled: isDisable}" class="arrow"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></button>
   </div>
 
   <div class="slides" :style="{with:slidesWidth+'px'}">
@@ -12,70 +12,68 @@
       <div class="slide" :style="{width:slideWidth +'px'}" v-for="(slide, index) in graphicDesignFB" :key="index">
         <Slide :slideitem="slide"/>
       </div>
-    </div> 
+    </div>
   </div>
 </section>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import Slide from './Slide.vue';
+import Slide from './Slide.vue'
 export default {
-    name:'GraphicDesign',
-    components:{
-      Slide
-    },
-    data(){
-      return{
-        slides:[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-        ],
-        isDisable:false,
-        innerWidth:0,
-        slideWidth:0,
-        currentIndex:0,
+  name: 'GraphicDesign',
+  components: {
+    Slide
+  },
+  data () {
+    return {
+      isDisable: false,
+      innerWidth: 0,
+      slideWidth: 0,
+      currentIndex: 0
+    }
+  },
+  methods: {
+    goPrev () {
+      if (this.currentIndex === 0) {
+        return { isDisable: true }
       }
+      this.currentIndex--
     },
-    methods:{
-      goPrev(){
-        if(this.currentIndex===0){
-          return {isDisable:true}
+    goNext () {
+      if (this.currentIndex === this.$store.state.slidesLength - 1) {
+        return {
+          isDisable: true
         }
-        this.currentIndex--
-      },
-      goNext(){
-        if(this.currentIndex===this.slides.length-1){
-          return {
-            isDisable:true
-          }
-        }
-        this.currentIndex++
-      },
-      goSlideIndex(index){
-        this.currentIndex = index
-      },
-      ...mapActions(['GET_GRAPHIC_DESIGN'])
+      }
+      this.currentIndex++
     },
-    computed:{
-      slideLength(){
-        return this.$store.getters.slideLength
-      },
-      slideInnerMarginLeft(){
-        return this.currentIndex * this.slideWidth
-      },
-      slideInnerWidth(){
-        return this.slideWidth * this.$store.state.slidesLength
-      },
-      slidesWidth(){
-        return this.slideWidth
-      },
-      ...mapState(['graphicDesignFB']),
+    goSlideIndex (index) {
+      this.currentIndex = index
     },
-    mounted(){
-      this.slideWidth = this.$el.clientWidth
+    ...mapActions(['GET_GRAPHIC_DESIGN'])
+  },
+  computed: {
+    // slideLength () {
+    //   return this.$store.getters.slideLength
+    // },
+    slideInnerMarginLeft () {
+      return this.currentIndex * this.slideWidth
     },
-    created(){
-      this.GET_GRAPHIC_DESIGN();
+    slideInnerWidth () {
+      return this.slideWidth * this.$store.state.slidesLength
     },
+    slidesWidth () {
+      return this.slideWidth
+    },
+    ...mapState(['graphicDesignFB'])
+  },
+  mounted () {
+    this.slideWidth = this.$el.clientWidth
+  },
+  created () {
+    this.GET_GRAPHIC_DESIGN()
+  }
 }
 </script>
 
@@ -89,7 +87,7 @@ export default {
   width: 100%;
 }
 .slide{
-    display: flex; 
+    display: flex;
     justify-content: center;
 }
 .slide img{
@@ -101,20 +99,30 @@ export default {
 }
 .pagination{
   position: absolute;
-  top: -20px;
+  top: 40%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-.pagination span{
-  color:#808080;
+.arrow{
+  border: none;
+  margin: 20px;
   cursor: pointer;
-  padding: 5px 20px;
-  margin: 0 5px;
-  border-radius: 5px;
-  border: 1px solid #eaecef;
-  background: rgba(255, 255, 255, 0.5);
+  width: 61px;
+  height: 61px;
+  border-radius: 50%;
+  background: #fafbfc;
+  opacity: .8;
+  box-shadow: 0px 0px 20px rgb(0 0 0 / 20%);
+  top: 40%;
 }
-.pagination span:hover{
-  border: 1px solid #000;
-  color: #000;
+.arrow:hover{
+  opacity: 1;
+}
+.arrow svg{
+  height: 1rem;
+  width: 1rem;
+  fill:#ced2d6;
 }
 .number{
   margin: 8px 5px 2px;
@@ -131,4 +139,3 @@ export default {
 }
 
 </style>
-

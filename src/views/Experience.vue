@@ -14,7 +14,7 @@
         </ul>
       </div>
     </div>
-    
+
   </section>
 </template>
 
@@ -23,20 +23,20 @@
 // import firedb from '@/firebase/firebaseinit'
 import { mapState, mapActions } from 'vuex'
 export default {
-    name:'Experience',
-    computed:{
-      ...mapState(['expcsFB']),
-    },
-    data(){
-      return{
-      }
-    },
-    created(){
-      this.GET_EXPCS();
-    },
-    methods:{
-      ...mapActions(['GET_EXPCS'])
+  name: 'Experience',
+  computed: {
+    ...mapState(['expcsFB'])
+  },
+  data () {
+    return {
     }
+  },
+  created () {
+    this.GET_EXPCS()
+  },
+  methods: {
+    ...mapActions(['GET_EXPCS'])
+  }
 }
 </script>
 

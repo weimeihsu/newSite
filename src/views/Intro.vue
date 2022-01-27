@@ -1,23 +1,21 @@
 <template>
-    <section class="container">   
-       
+    <section class="container">
+
         <div class="flex-center">
         <span class="highlight">I'm WeiMei, a UI/UX designer. </span>
         <p>My job is to collect and summarize ideas and convert them into visual forms that can communicate with target users.</p>
         <p>I like observing and thinking. Things happen in my life are my source of inspiration</p>
-        
+
         <img src="../assets/img/process.svg" alt="">
         <!-- <p>This site collects most of my fine works, which can help illustrate my capability in design field. If you have any comments or feedback, feel free to contact me via <a href="mailto:weimei0928@gmail.com">email</a>.</p> -->
         </div>
-        
-        
-        
+
     </section>
 </template>
 
 <script>
 export default {
-    name:'Intro'
+  name: 'Intro'
 }
 </script>
 

@@ -5,12 +5,12 @@
 
 <script>
 export default {
-    name:'Slide',
-    props:['slideitem'],
-    data(){
-        return{
-        }
-    } 
+  name: 'Slide',
+  props: ['slideitem'],
+  data () {
+    return {
+    }
+  }
 }
 </script>
 <style scoped>

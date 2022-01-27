@@ -9,7 +9,7 @@
       <span class="burger-line"></span>
       </div> -->
     </div>
-      
+
     <ul class="navbar-nav">
       <li class="nav-item">
         <router-link class="nav-link" :to="{name:'GraphicDesign'}">Graphic Design</router-link>
@@ -20,8 +20,8 @@
       <li class="nav-item">
         <router-link class="nav-link" :to="{name:'Experience'}">Experience</router-link>
       </li>
-    </ul> 
-  </nav>    
+    </ul>
+  </nav>
 </div>
 </template>
 
@@ -29,15 +29,15 @@
 // import Dropdown from './Dropdown.vue';
 
 export default {
-    name:'Menu',
-    components:{
-      // Dropdown
-    },
-    data(){ 
-      return{
-        menu:[]
-      }
+  name: 'Menu',
+  components: {
+    // Dropdown
+  },
+  data () {
+    return {
+      menu: []
     }
+  }
 }
 </script>
 
