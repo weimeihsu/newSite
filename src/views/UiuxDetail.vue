@@ -1,7 +1,7 @@
 <template>
   <div class="gallery" v-for="(item, index) in uiuxFB" :key="index">
      <img v-for="(imgs, index) in item.img" :key="index" :src="imgs" :alt="item.title" />
-      <p>this is paramater id {{$route.params.id}} </p>
+      <p>this is paramater id {{item.id}} </p>
   </div>
 </template>
 

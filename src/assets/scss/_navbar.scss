@@ -66,12 +66,10 @@ a{
     display: flex;
     align-items: center;
     transition: 0.4s;
-    
     .nav-link {
       padding:20px;
       text-decoration: none;
       // color:$main;
-      
       &:hover{
         color: $active;
       }
@@ -81,11 +79,8 @@ a{
 .router-link-active{
   border-bottom: $active 1px solid;
   color: $active;
-  
 }
 .dropdown-wrapper{
-  // position: fixed;
-  // top: 64px;
   border-bottom: 1px solid $border-color;
   background: rgba($color: #ffffff, $alpha: 1.0);
   margin-right: 2rem;

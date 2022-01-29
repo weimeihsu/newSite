@@ -3,14 +3,12 @@
     <Dropdown/>
     <!-- <div v-for="(item, index) in uiuxFB" :key="index"> -->
     <UiuxDetail/>
-    <!-- :uiuxItem="item" -->
-    <!-- <router-view/>  -->
   </div>
 
 </template>
 
 <script>
-// import { mapState, mapActions } from 'vuex'
+import firedb from '../firebase/firebaseinit'
 import Dropdown from '../components/Dropdown.vue'
 import UiuxDetail from './UiuxDetail.vue'
 export default {
@@ -18,16 +16,14 @@ export default {
   components: {
     Dropdown,
     UiuxDetail
+  },
+  methods: {
+  },
+  created () {
+    firedb.collection('uiux').get().then((snapshot) => {
+      console.log(snapshot.docs)
+    })
   }
-  // computed: {
-  //   ...mapState(['uiuxFB'])
-  // },
-  // created () {
-  //   this.GET_UIUX()
-  // },
-  // methods: {
-  //   ...mapActions(['GET_UIUX'])
-  // }
 }
 </script>
 

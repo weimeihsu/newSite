@@ -1,14 +1,15 @@
 <template>
 <div class="dropdown-wrapper">
-    <div v-for="(li, index) in uiuxFB" :key="index"  class="dropdown-item" >
-        <router-link class="dropdown-link" :to="{name:'Uiux', params:{id: li.title}}">{{li.title}}</router-link>
-    </div>
-
+  <div v-for="(li, index) in uiuxFB" :key="index"  class="dropdown-item" >
+    <a @click="fetchID()">{{li.title}}</a>
+  </div>
+<!-- router-link :to="{name:'UiuxDetail', params:{id: li.title}}" -->
 </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { ref } from 'vue'
 export default {
   name: 'Dropdown',
   computed: {
@@ -19,6 +20,16 @@ export default {
   },
   methods: {
     ...mapActions(['GET_UIUX'])
+  },
+  setup () {
+    const uiuxImg = ref([])
+
+    const fetchID = () => {
+    }
+
+    return {
+      uiuxImg, fetchID
+    }
   }
 }
 </script>

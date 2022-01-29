@@ -10,37 +10,6 @@ const store = createStore({
     expcsLoaded: null,
     graphicDesignLoaded: null,
     uiuxLoaded: null,
-    uiuxImages: [
-      {
-        id: 1,
-        title: 'SingleSignOn',
-        path: '/Uiux/sso',
-        images: [
-          { url: require('@/assets/img/uiux/csp/sso/sso-1.jpg'), alt: 'img-1' },
-          { url: require('@/assets/img/uiux/csp/sso/sso-2.jpg'), alt: 'img-2' }
-        ]
-      },
-      {
-        id: 2,
-        title: 'Charts',
-        path: '/Uiux/chart',
-        images: [
-          { url: require('@/assets/img/uiux/csp/chart/charts.png'), alt: 'img-1' },
-          { url: require('@/assets/img/uiux/csp/chart/chart property.jpg'), alt: 'img-2' },
-          { url: require('@/assets/img/uiux/csp/chart/chart data.jpg'), alt: 'img-2' }
-        ]
-      },
-      {
-        id: 3,
-        title: 'App Studio',
-        path: '/Uiux/AppStudio',
-        images: [
-          { url: require('@/assets/img/uiux/csp/chart/charts.png'), alt: 'img-1' },
-          { url: require('@/assets/img/uiux/csp/chart/chart property.jpg'), alt: 'img-2' },
-          { url: require('@/assets/img/uiux/csp/chart/chart data.jpg'), alt: 'img-2' }
-        ]
-      }
-    ],
     slidesLength: null
   },
   getters: {
