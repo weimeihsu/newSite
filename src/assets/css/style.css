@@ -99,17 +99,18 @@ a {
   color: #000000;
 }
 
-.dropdown-wrapper {
-  border-bottom: 1px solid #eaecef;
+.tabs-wrapper {
+  border-right: 1px solid #eaecef;
   background: white;
   margin-right: 2rem;
+  padding-right: 2rem;
 }
 
-.dropdown-wrapper .dropdown-item {
+.tabs-wrapper .tab-item {
   margin-bottom: 5px;
 }
 
-.dropdown-wrapper .dropdown-item a {
+.tabs-wrapper .tab-item a {
   text-decoration: none;
   font-size: 0.9rem;
   color: #808080;
@@ -120,7 +121,7 @@ a {
   border-bottom: transparent 1px solid;
 }
 
-.dropdown-wrapper .dropdown-item a:hover {
+.tabs-wrapper .tab-item a:hover {
   border-bottom: #000000 1px solid;
   cursor: pointer;
   color: #000000;

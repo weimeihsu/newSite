@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import GraphicDesign from '../views/graphicDesign/GraphicDesign'
 import Uiux from '../views/Uiux'
-import UiuxDetail from '../views/UiuxDetail'
 import Experience from '../views/Experience'
 import Intro from '../views/Intro'
 
@@ -20,11 +19,6 @@ const routes = [
     path: '/Uiux',
     name: 'Uiux',
     component: Uiux
-  },
-  {
-    path: '/Uiux/:id',
-    name: 'UiuxDetail',
-    component: UiuxDetail
   },
   {
     path: '/Experience',
