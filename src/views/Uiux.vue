@@ -1,20 +1,18 @@
 <template>
   <div class="container">
-    <ul class="tabs-wrapper">
-      <li v-for="(li, index) in uiuxFB" :key="index" class="tab-item" >
-        <Tabs :tab="li" />
-      </li>
-    </ul>
-    <div v-for="(item, index) in uiuxFB" :key="index" class="gallery" >
-      <UiuxDetail :uiuxItem="item" />
-    </div>
+      <ul class="tabs-wrapper">
+        <li v-for="(li, index) in uiuxFB" :key="index" class="tab-item" ><Tabs :tabs="li" /></li>
+      </ul>
+      <div v-show="isActive" v-for="(imgs, item) in uiuxFB" :key="item" class="gallery" >
+        <UiuxDetail :uiuxItem="imgs" />
+      </div>
   </div>
 
 </template>
 
 <script>
 import Tabs from '../components/Tabs.vue'
-import UiuxDetail from './UiuxDetail.vue'
+import UiuxDetail from '../components/UiuxDetail.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Uiux',
