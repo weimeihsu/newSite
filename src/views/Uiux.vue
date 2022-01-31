@@ -1,19 +1,17 @@
 <template>
   <div class="container">
-      <ul class="tabs-wrapper">
-        <li v-for="(li, index) in uiuxFB" :key="index" class="tab-item" ><Tabs :tabs="li" /></li>
-      </ul>
-      <div v-show="isActive" v-for="(imgs, item) in uiuxFB" :key="item" class="gallery" >
-        <UiuxDetail :uiuxItem="imgs" />
+    <Tabs :selected="selected" @selected="setSelected" :tabs="uiuxTabArray">
+      <div v-for="(item, index) in uiuxFB" :key="index" class="gallery">
+        <UiuxDetail :isSelected="selected === item.title "><img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs"></UiuxDetail>
       </div>
+    </Tabs>
   </div>
-
 </template>
 
 <script>
+import { mapGetters, mapState, mapActions } from 'vuex'
 import Tabs from '../components/Tabs.vue'
 import UiuxDetail from '../components/UiuxDetail.vue'
-import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Uiux',
   components: {
@@ -21,17 +19,21 @@ export default {
   },
   data () {
     return {
-      isActive: true
+      selected: 'Single Sign On'
     }
   },
   computed: {
+    ...mapGetters(['uiuxTabArray']),
     ...mapState(['uiuxFB'])
   },
   created () {
     this.GET_UIUX()
   },
   methods: {
-    ...mapActions(['GET_UIUX'])
+    ...mapActions(['GET_UIUX']),
+    setSelected (tab) {
+      this.selected = tab
+    }
   }
   // created () {
   //   firedb.collection('uiux').get().then((snapshot) => {
@@ -52,8 +54,11 @@ export default {
 
 <style scoped>
 .container{
-  display: flex;
-  flex-direction: row;
+  position: relative;
   margin: 60px auto 0;
+}
+.gallery{
+  max-width: 80%;
+  margin-left: 170px;
 }
 </style>

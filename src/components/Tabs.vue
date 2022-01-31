@@ -1,10 +1,13 @@
 <template>
-    <a @click="selectTab(tab)" :class="{ active: tab === selected }">{{tabs.title}}</a>
-
+<ul class="tabs-wrapper">
+  <li v-for="tab in tabs" :key="tab" class="tab-item" @click="selectTab(tab)">
+    <a :class="{ active: tab === selected }">{{tab}}</a></li>
+</ul>
     <slot></slot>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Tabs',
   props: {
@@ -17,10 +20,18 @@ export default {
       required: true
     }
   },
+  computed: {
+    ...mapState(['uiuxFB'])
+  },
+  created () {
+    this.GET_UIUX()
+  },
   methods: {
+    ...mapActions(['GET_UIUX']),
     selectTab (tab) {
       this.$emit('selected', tab)
     }
   }
+  // this.$emit('selected', tab) this 'selected' here is the @selected=... in the parent vue
 }
 </script>

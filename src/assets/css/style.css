@@ -5,6 +5,7 @@ a {
 
 .fixed-wrapper {
   position: fixed;
+  z-index: 10;
   top: 0;
   width: 100%;
   margin: auto;
@@ -100,28 +101,23 @@ a {
 }
 
 .tabs-wrapper {
+  position: fixed;
   border-right: 1px solid #eaecef;
   background: white;
-  margin-right: 2rem;
   padding-right: 2rem;
+  list-style: none;
+  min-width: 150px;
 }
 
 .tabs-wrapper .tab-item {
-  margin-bottom: 5px;
-}
-
-.tabs-wrapper .tab-item a {
   text-decoration: none;
   font-size: 0.9rem;
   color: #808080;
-  padding: 10px 0 5px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  padding: 24px 0 5px 0;
   border-bottom: transparent 1px solid;
 }
 
-.tabs-wrapper .tab-item a:hover {
+.tabs-wrapper .tab-item:hover {
   border-bottom: #000000 1px solid;
   cursor: pointer;
   color: #000000;

@@ -1,7 +1,6 @@
 <template>
-  <div v-if="isSelected">
+  <div v-if="isSelected" class="uiux-imgs">
     <slot></slot>
-    <!-- <img :src="img" v-for="(img, index) in uiuxItem.img" :key="index"/> -->
   </div>
 </template>
 
@@ -11,15 +10,16 @@ export default {
   props: {
     isSelected: {
       type: Boolean
-    },
-    uiuxItem: {
-      type: String
     }
   }
 }
 </script>
-<style scoped>
-img{
-  max-width: 100%;
+<style>
+.uiux-imgs{
+  display: flex;
+  flex-direction: column;
+}
+.uiux-imgs img{
+  margin-bottom: 20px;
 }
 </style>

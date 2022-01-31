@@ -9,6 +9,7 @@ a{
 
 .fixed-wrapper{
   position: fixed;
+  z-index: 10;
   top: 0;
   width: 100%;
   margin: auto;
@@ -81,26 +82,24 @@ a{
   color: $active;
 }
 .tabs-wrapper{
+  position: fixed;
   border-right: 1px solid $border-color;
   background: rgba($color: #ffffff, $alpha: 1.0);
-  margin-right: 2rem;
   padding-right: 2rem;
+  list-style: none;
+  min-width: 150px;
 
     .tab-item {
-      margin-bottom: 5px;
-      a{
         text-decoration: none;
         font-size: 0.9rem;
         color: $main;
-        padding: 10px 0 5px 0;
-        display: flex;
+        padding: 24px 0 5px 0;
         border-bottom: transparent 1px solid;
         &:hover {
           border-bottom: $active 1px solid;
           cursor: pointer;
           color: $active;
           }
-      }
     }
 }
 
