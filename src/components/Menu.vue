@@ -29,7 +29,6 @@
 
 <script>
 // import Dropdown from './Dropdown.vue';
-
 export default {
   name: 'Menu',
   components: {
@@ -40,9 +39,11 @@ export default {
       ShowDropdown: true
     }
   },
+  computed: {
+  },
   methods: {
     ToggleDropdown () {
-      if (this.$el.clientWidth < 744) { this.ShowDropdown = !this.ShowDropdown } else { this.ShowDropdown = true }
+      this.ShowDropdown = !this.ShowDropdown
     }
   }
 }
