@@ -36,14 +36,24 @@ export default {
   },
   data () {
     return {
-      ShowDropdown: true
+      ShowDropdown: null
     }
   },
-  computed: {
+  created () {
+    this.CheckScreen()
+    window.addEventListener('resize', this.CheckScreen)
   },
   methods: {
     ToggleDropdown () {
       this.ShowDropdown = !this.ShowDropdown
+    },
+    CheckScreen () {
+      const ScreenWidth = window.innerWidth
+      if (ScreenWidth > 744) {
+        this.ShowDropdown = true
+        return
+      }
+      this.ShowDropdown = false
     }
   }
 }
