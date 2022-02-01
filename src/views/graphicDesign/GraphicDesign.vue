@@ -54,9 +54,6 @@ export default {
     ...mapActions(['GET_GRAPHIC_DESIGN'])
   },
   computed: {
-    // slideLength () {
-    //   return this.$store.getters.slideLength
-    // },
     slideInnerMarginLeft () {
       return this.currentIndex * this.slideWidth
     },

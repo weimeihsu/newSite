@@ -3,22 +3,24 @@
 <nav class="navbar">
     <div class="nav-brand">
       <router-link :to="{name:'Intro'}">@WeiMei.tw</router-link>
-      <!-- <div class="burger">
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-      </div> -->
+      <div class="burger" @click="ToggleDropdown">
+      <svg viewBox="0 0 24 20" width="24" height="20" class="burger-line">
+      <rect width="24" height="2"></rect>
+      <rect y="9" width="24" height="2"></rect>
+      <rect y="18" width="24" height="2"></rect>
+      </svg>
+      </div>
     </div>
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" v-if="ShowDropdown">
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'GraphicDesign'}">Graphic Design</router-link>
+        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdown">Graphic Design</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Uiux'}">UIUX</router-link>
+        <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdown">UIUX</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Experience'}">Experience</router-link>
+        <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdown">Experience</router-link>
       </li>
     </ul>
   </nav>
@@ -35,7 +37,12 @@ export default {
   },
   data () {
     return {
-      menu: []
+      ShowDropdown: true
+    }
+  },
+  methods: {
+    ToggleDropdown () {
+      if (this.$el.clientWidth < 744) { this.ShowDropdown = !this.ShowDropdown } else { this.ShowDropdown = true }
     }
   }
 }

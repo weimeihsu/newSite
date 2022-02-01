@@ -39,29 +39,17 @@ a {
 }
 
 .burger {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 5px;
+  display: none;
+  padding-top: 8px;
 }
 
-.burger:hover {
-  background-color: #000000;
-  border-radius: 3px;
+.burger .burger-line {
+  fill: #808080;
+}
+
+.burger .burger-line:hover {
   cursor: pointer;
-}
-
-.burger-line {
-  width: 1em;
-  height: 2px;
-  background: #808080;
+  fill: #000000;
 }
 
 .navbar-nav {
@@ -87,7 +75,7 @@ a {
 }
 
 .navbar-nav .nav-item .nav-link {
-  padding: 20px;
+  padding: 20px 20px 18px 20px;
   text-decoration: none;
 }
 
@@ -163,31 +151,46 @@ html {
           align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 744px) {
   .container {
     max-width: 720px;
   }
   .navbar {
     display: block;
+    margin-top: 10px;
   }
-  .navbar-nav {
-    width: 100%;
+  .nav-brand {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding-bottom: 10px;
   }
-  .navbar-nav .dropdown-wrapper {
+  .nav-brand .burger {
+    display: block;
+  }
+  .navbar-nav {
+    width: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-shadow: none;
-            box-shadow: none;
   }
-  .nav-brand {
-    padding: 20px;
+  .navbar-nav .nav-item {
+    width: 100%;
   }
-  .nav-item {
+  .navbar-nav .nav-item .nav-link {
+    padding: 10px 0;
+    width: 100%;
     text-align: center;
   }
 }

@@ -18,13 +18,11 @@ a{
 .navbar {
   position: relative;
   display: flex;
-  // flex-wrap: wrap; allow us to do the line break for collapsing content
   align-items: center;
   justify-content: space-between; // space out brand from logo
   padding:0 20px;
   border-bottom: 1px solid $border-color;
   cursor: pointer;
-  //margin-bottom: 63px;
 }
 
 .nav-brand {
@@ -36,21 +34,15 @@ a{
   }
 }
 .burger{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 5px;
-  &:hover{
-    background-color: #000000;
-    border-radius: 3px;
-    cursor: pointer;
+  display: none;
+  padding-top: 8px;
+  .burger-line {
+    fill:$main;
+    &:hover{
+      cursor: pointer;
+      fill:$active;
+    }
   }
-}
-.burger-line {
-  width: 1em;
-  height: 2px;
-  //margin-bottom: 6px;
-  background:$main;
 }
 
 
@@ -68,7 +60,7 @@ a{
     align-items: center;
     transition: 0.4s;
     .nav-link {
-      padding:20px;
+      padding:20px 20px 18px 20px;
       text-decoration: none;
       // color:$main;
       &:hover{
