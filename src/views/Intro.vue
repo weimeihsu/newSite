@@ -28,6 +28,7 @@ img{
     color: #000000;
     font-size: 2rem;
     margin-bottom: 10px;
+    text-align: center;
 }
 .container{
     display: flex;

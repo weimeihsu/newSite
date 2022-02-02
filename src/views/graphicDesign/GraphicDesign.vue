@@ -1,5 +1,5 @@
 <template>
-<section class="gallery flex-center">
+<section class="gallery flex-center" v-if="desktopView">
   <div class="pagination">
     <button @click="goPrev" :class="{disabled: isDisable}" class="arrow">
       <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg>
@@ -13,6 +13,11 @@
         <Slide :slideitem="slide"/>
       </div>
     </div>
+  </div>
+</section>
+<section class="mobile-gallery" v-else>
+  <div class="mobile-graphics" v-for="(slide, index) in graphicDesignFB" :key="index">
+     <img :src="slide.img" :alt="slide.title" />
   </div>
 </section>
 </template>
@@ -30,10 +35,24 @@ export default {
       isDisable: false,
       innerWidth: 0,
       slideWidth: 0,
-      currentIndex: 0
+      currentIndex: 0,
+      desktopView: null
     }
   },
+  created () {
+    this.GET_GRAPHIC_DESIGN()
+    this.CheckScreen()
+    window.addEventListener('resize', this.CheckScreen)
+  },
   methods: {
+    CheckScreen () {
+      const ScreenWidth = window.innerWidth
+      if (ScreenWidth > 744) {
+        this.desktopView = true
+        return
+      }
+      this.desktopView = false
+    },
     goPrev () {
       if (this.currentIndex === 0) {
         return { isDisable: true }
@@ -67,9 +86,6 @@ export default {
   },
   mounted () {
     this.slideWidth = this.$el.clientWidth
-  },
-  created () {
-    this.GET_GRAPHIC_DESIGN()
   }
 }
 </script>
@@ -78,6 +94,10 @@ export default {
 .gallery{
   margin: 100px auto 0;
   position: relative;
+}
+.mobile-gallery{
+  margin: 80px auto 0;
+  width: 90%;
 }
 .slides{
   overflow: hidden;
@@ -88,7 +108,8 @@ export default {
     justify-content: center;
 }
 .slide img{
-    height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px);
+    max-width: 100vw;
 }
 .slideInnerContainer{
   transition: margin 0.4s ease-out;
@@ -121,18 +142,12 @@ export default {
   width: 1rem;
   fill:#ced2d6;
 }
-.number{
-  margin: 8px 5px 2px;
-  padding: 0 3px;
-  border-radius: 20px;
-  background:#eaecef;
-}
-.current{
-  color: #ffffff;
-  background: #808080;
-}
 .disabled{
   color: #cccccc;
+}
+.mobile-graphics img{
+  max-width: 100%;
+  margin-bottom: 10px;
 }
 
 </style>
