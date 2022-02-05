@@ -11,16 +11,15 @@
       </svg>
       </div>
     </div>
-
-    <ul class="navbar-nav" v-if="ShowDropdown">
+    <ul class="navbar-nav" v-show="ShowDropdown">
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdown">Graphic Design</router-link>
+        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdownNavItem">Graphic Design</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdown">UIUX</router-link>
+        <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdownNavItem">UIUX</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdown">Experience</router-link>
+        <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdownNavItem">Experience</router-link>
       </li>
     </ul>
   </nav>
@@ -46,6 +45,14 @@ export default {
   methods: {
     ToggleDropdown () {
       this.ShowDropdown = !this.ShowDropdown
+    },
+    ToggleDropdownNavItem () {
+      const ScreenWidth = window.innerWidth
+      if (ScreenWidth <= 744) {
+        this.ShowDropdown = !this.ShowDropdown
+        return
+      }
+      this.ShowDropdown = true
     },
     CheckScreen () {
       const ScreenWidth = window.innerWidth
