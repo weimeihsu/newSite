@@ -44,8 +44,12 @@ export default {
   margin-bottom: 40px;
   display: flex;
 }
+.left {
+  min-width: fit-content;
+  margin-right: 20px;
+}
 .left img{
-  max-width: 70%;
+  max-width: 56px;
   margin-top: 0.5rem;
 }
 ul{
