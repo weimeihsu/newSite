@@ -5,6 +5,9 @@
 a{
   text-decoration: none;
   color: $main;
+  &:hover{
+    color: $active;
+  }
 }
 
 .fixed-wrapper{
@@ -24,7 +27,6 @@ a{
   border-bottom: 1px solid $border-color;
   cursor: pointer;
 }
-
 .nav-brand {
   font-size: 20px;
   .router-link-active{
@@ -62,10 +64,6 @@ a{
     .nav-link {
       padding:20px 20px 18px 20px;
       text-decoration: none;
-      // color:$main;
-      &:hover{
-        color: $active;
-      }
     }
   }
 }
@@ -87,11 +85,18 @@ a{
         color: $main;
         padding: 24px 0 5px 0;
         border-bottom: transparent 1px solid;
+        transition: 0.3s ease;
         &:hover {
           border-bottom: $active 1px solid;
           cursor: pointer;
           color: $active;
           }
+    }
+    .active{
+      border-bottom: $active 1px solid;
+      a{
+        color: $active;
+      }
     }
 }
 

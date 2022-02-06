@@ -1,7 +1,7 @@
 <template>
 <ul class="tabs-wrapper">
-  <li v-for="tab in tabs" :key="tab" class="tab-item" @click="selectTab(tab)">
-    <a :class="{ active: tab === selected }">{{tab}}</a></li>
+  <li v-for="tab in tabs" :key="tab" class="tab-item" :class="{ active: tab === selected }"  @click="selectTab(tab)">
+    <a>{{tab}}</a></li>
 </ul>
     <slot></slot>
 </template>

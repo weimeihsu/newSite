@@ -3,6 +3,7 @@ import GraphicDesign from '../views/graphicDesign/GraphicDesign'
 import Uiux from '../views/Uiux'
 import Experience from '../views/Experience'
 import Intro from '../views/Intro'
+import More from '../views/More'
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/Uiux',
     name: 'Uiux',
     component: Uiux
+  },
+  {
+    path: '/More',
+    name: 'More',
+    component: More
   },
   {
     path: '/Experience',

@@ -6,10 +6,12 @@ const store = createStore({
   state: {
     expcsFB: [],
     graphicDesignFB: [],
+    pdfFB: [],
     uiuxFB: [],
     expcsLoaded: null,
     graphicDesignLoaded: null,
     uiuxLoaded: null,
+    pdfLoaded: null,
     slidesLength: null
   },
   getters: {
@@ -42,6 +44,13 @@ const store = createStore({
     },
     UIUX_LOADED (state) {
       state.uiuxLoaded = true
+    },
+    SET_PDF_DATA (state, payload) {
+      state.pdfFB.push(payload)
+      // console.log(state.expcsFB);  check if data is retrieved from firebase
+    },
+    PDF_LOADED (state) {
+      state.pdfLoaded = true
     }
   },
   actions: {
@@ -95,6 +104,22 @@ const store = createStore({
         }
       })
       commit('UIUX_LOADED')
+    },
+    async GET_PDF ({ commit, state }) {
+      const getData = firedb.collection('pdf')
+      const result = await getData.get()
+      result.forEach(doc => {
+        if (!state.pdfFB.some(pdfSet => pdfSet.id === doc.id)) {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            file: doc.data().file,
+            des: doc.data().des
+          }
+          commit('SET_PDF_DATA', data)
+        }
+      })
+      commit('PDF_LOADED')
     }
   }
 })

@@ -3,6 +3,10 @@ a {
   color: #808080;
 }
 
+a:hover {
+  color: #000000;
+}
+
 .fixed-wrapper {
   position: fixed;
   z-index: 10;
@@ -79,10 +83,6 @@ a {
   text-decoration: none;
 }
 
-.navbar-nav .nav-item .nav-link:hover {
-  color: #000000;
-}
-
 .router-link-active {
   border-bottom: #000000 1px solid;
   color: #000000;
@@ -111,6 +111,14 @@ a {
   color: #000000;
 }
 
+.tabs-wrapper .active {
+  border-bottom: #000000 1px solid;
+}
+
+.tabs-wrapper .active a {
+  color: #000000;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -120,10 +128,6 @@ a {
 
 h4 {
   margin-bottom: 5px;
-}
-
-p {
-  color: #808080;
 }
 
 html {

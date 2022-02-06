@@ -13,10 +13,13 @@
     </div>
     <ul class="navbar-nav" v-show="ShowDropdown">
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdownNavItem">Graphic Design</router-link>
+        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdownNavItem"><div class="icon"><img src="../assets/img/icons/icon_graphic_design.svg" alt=""></div>Graphic Design</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdownNavItem">UIUX</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link class="nav-link" :to="{name:'More'}" @click="ToggleDropdownNavItem">And More</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdownNavItem">Experience</router-link>
@@ -68,6 +71,7 @@ export default {
 
 <style>
 @import '../assets/css/style.css';
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
-
+.icon{
+  fill: #808080;
+}
 </style>
