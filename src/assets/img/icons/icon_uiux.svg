@@ -1,21 +1,8 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <defs>
-    <style>
-      .cls-1, .cls-2 {
-        fill: none;
-      }
-
-      .cls-2 {
-        stroke: #000;
-        stroke-linejoin: round;
-        stroke-width: 2px;
-      }
-    </style>
-  </defs>
+<svg id="outline" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
   <title>process</title>
-  <rect class="cls-1" x="-1265.40597" y="-370.50672" width="4292.00983" height="2779.30444"/>
-  <path d="M26,2V26H2V2H26m2-2H0V28H28V0Z"/>
-  <path d="M58,34V58H34V34H58m2-2H32V60H60V32Z"/>
-  <polyline class="cls-2" points="31 11.25 46 11.25 46 26.25"/>
-  <polyline class="cls-2" points="41.027 21.961 46.027 26.961 51.027 21.961"/>
+  <g>
+    <path d="M0,28H28V0H0ZM3,3H25V25H3Z"/>
+    <path d="M32,32V60H60V32ZM57,57H35V35H57Z"/>
+    <path d="M44.5,23.3125l-2.41211-2.41211L39.9668,23.02148l5,5a1.49943,1.49943,0,0,0,2.12109,0l5-5L49.9668,20.90039,47.5,23.36719V11.25A1.50008,1.50008,0,0,0,46,9.75H31v3H44.5Z"/>
+  </g>
 </svg>

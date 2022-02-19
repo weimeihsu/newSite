@@ -1,13 +1,7 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-      }
-    </style>
-  </defs>
+<svg id="outline" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
   <title>process</title>
-  <path d="M30,2A28,28,0,1,1,2,30,28.03174,28.03174,0,0,1,30,2m0-2A30,30,0,1,0,60,30,30,30,0,0,0,30,0Z"/>
-  <path d="M24,19.48207,42.03076,30,24,40.51793V19.48207M22,16V44L46,30,22,16Z"/>
-  <rect class="cls-1" x="-1505.40597" y="-370.50672" width="4292.00983" height="2779.30444"/>
+  <g>
+    <path d="M30,0A30,30,0,1,0,60,30,30,30,0,0,0,30,0Zm0,57A27,27,0,1,1,57,30,27.03054,27.03054,0,0,1,30,57Z"/>
+    <path d="M22,44,46,30,22,16Zm3-22.77692L40.04614,30,25,38.77686Z"/>
+  </g>
 </svg>

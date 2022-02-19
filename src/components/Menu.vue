@@ -13,16 +13,16 @@
     </div>
     <ul class="navbar-nav" v-show="ShowDropdown">
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdownNavItem"><div class="icon"><img src="../assets/img/icons/icon_graphic_design.svg" alt=""></div>Graphic Design</router-link>
+        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdownNavItem"><span class="icon-icon_graphic-design"></span>Graphic Design</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdownNavItem">UIUX</router-link>
+        <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdownNavItem"><span class="icon-icon_uiux"></span>UIUX</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'More'}" @click="ToggleDropdownNavItem">And More</router-link>
+        <router-link class="nav-link" :to="{name:'More'}" @click="ToggleDropdownNavItem"><span class="icon-icon_more"></span>And More</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdownNavItem">Experience</router-link>
+        <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdownNavItem"><span class="icon-icon_experience"></span>Since 2010</router-link>
       </li>
     </ul>
   </nav>
@@ -71,6 +71,7 @@ export default {
 
 <style>
 @import '../assets/css/style.css';
+@import '../assets/css/fontstyle.css';
 .icon{
   fill: #808080;
 }

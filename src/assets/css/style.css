@@ -83,6 +83,10 @@ a:hover {
   text-decoration: none;
 }
 
+.navbar-nav .nav-item .nav-link span {
+  margin-right: 10px;
+}
+
 .router-link-active {
   border-bottom: #000000 1px solid;
   color: #000000;
@@ -103,6 +107,8 @@ a:hover {
   color: #808080;
   padding: 24px 0 5px 0;
   border-bottom: transparent 1px solid;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .tabs-wrapper .tab-item:hover {
