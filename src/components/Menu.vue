@@ -12,17 +12,8 @@
       </div>
     </div>
     <ul class="navbar-nav" v-show="ShowDropdown">
-      <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'GraphicDesign'}" @click="ToggleDropdownNavItem"><span class="icon-icon_graphic-design"></span>Graphic Design</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Uiux'}" @click="ToggleDropdownNavItem"><span class="icon-icon_uiux"></span>UIUX</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'More'}" @click="ToggleDropdownNavItem"><span class="icon-icon_more"></span>And More</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'Experience'}" @click="ToggleDropdownNavItem"><span class="icon-icon_experience"></span>Since 2010</router-link>
+      <li class="nav-item" v-for="(menuItem, index) in menu" :key="index">
+        <router-link class="nav-link" :to="{name:menuItem.goto}" @click="ToggleDropdownNavItem" @mouseover="ShowText"><span :class="menuItem.icon"></span><span class="text">{{menuItem.text}}</span></router-link>
       </li>
     </ul>
   </nav>
@@ -38,8 +29,42 @@ export default {
   },
   data () {
     return {
-      ShowDropdown: null
+      ShowDropdown: null,
+      menu: [
+        {
+          goto: 'GraphicDesign',
+          text: 'Graphic Design',
+          icon: 'icon-icon_graphic-design'
+        },
+        {
+          goto: 'Uiux',
+          text: 'UIUX',
+          icon: 'icon-icon_uiux'
+        },
+        {
+          goto: 'More',
+          text: 'And More',
+          icon: 'icon-icon_more'
+        },
+        {
+          goto: 'Experience',
+          text: 'Since 2010',
+          icon: 'icon-icon_experience'
+        }
+      ]
     }
+  },
+  setup () {
+    function handleTransition (item, text) {
+      item.addEventListener('transition', e => {
+        if (e.propertyName !== 'flex' ||
+        !item.classList.contains('active')) return
+
+        text.classList.add('active')
+      })
+    }
+    const text = document.querySelector('.text')
+    return { handleTransition, text }
   },
   created () {
     this.CheckScreen()
@@ -64,6 +89,11 @@ export default {
         return
       }
       this.ShowDropdown = false
+    },
+    ShowText (e) {
+      if (e.target.classList.contains('active') || e.target.classList.contains('router-link-active')) return
+      e.target.classList.add('active')
+      e.relatedTarget.classList.remove('active')
     }
   }
 }
@@ -72,7 +102,14 @@ export default {
 <style>
 @import '../assets/css/style.css';
 @import '../assets/css/fontstyle.css';
-.icon{
-  fill: #808080;
+
+/* .text{
+  display: none;
+} */
+.active .text, .router-link-active .text{
+  display: block;
+}
+.text{
+  display: none;
 }
 </style>
