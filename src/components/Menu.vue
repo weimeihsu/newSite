@@ -91,9 +91,8 @@ export default {
       this.ShowDropdown = false
     },
     ShowText (e) {
-      if (e.target.classList.contains('active') || e.target.classList.contains('router-link-active')) return
-      e.target.classList.add('active')
-      e.relatedTarget.classList.remove('active')
+      const text = document.querySelectorAll('.text')
+      console.log(text)
     }
   }
 }
@@ -109,7 +108,5 @@ export default {
 .active .text, .router-link-active .text{
   display: block;
 }
-.text{
-  display: none;
-}
+
 </style>
