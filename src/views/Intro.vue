@@ -3,7 +3,7 @@
 
         <div class="flex-center">
         <span class="highlight">I'm WeiMei, a UI/UX designer. </span>
-        <p>My job is to collect and summarize ideas and convert them into visual forms that can communicate with target users.</p>
+        <p>My job is to transfer ideas into visual forms, which can help communicate with the target audience.</p>
         <p>I like observing and thinking. Things happen in my life are my source of inspiration</p>
 
         <img src="../assets/img/process.svg" alt="">

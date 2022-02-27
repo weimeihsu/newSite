@@ -15,11 +15,12 @@ export default {
 }
 </script>
 <style>
-.uiux-imgs{
-  display: flex;
+.uiux-imgs {
   flex-direction: column;
+  padding-left: 20px;
 }
 .uiux-imgs img{
   margin-bottom: 20px;
+  width: 100%;
 }
 </style>

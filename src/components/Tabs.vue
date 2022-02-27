@@ -1,5 +1,5 @@
 <template>
-<ul class="tabs-wrapper">
+<ul class="tabs-wrapper" ref="tabWrapper">
   <li v-for="tab in tabs" :key="tab" class="tab-item" :class="{ active: tab === selected }"  @click="selectTab(tab)">
     <a>{{tab}}</a></li>
 </ul>
@@ -20,6 +20,11 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      tabWrapperWidth: null
+    }
+  },
   computed: {
     ...mapState(['uiuxFB'])
   },
@@ -31,6 +36,9 @@ export default {
     selectTab (tab) {
       this.$emit('selected', tab)
     }
+  },
+  mounted () {
+    this.tabWrapperWidth = this.$refs.tabWrapper.clientWidth
   }
   // this.$emit('selected', tab) this 'selected' here is the @selected=... in the parent vue
 }

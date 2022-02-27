@@ -13,7 +13,7 @@
     </div>
     <ul class="navbar-nav" v-show="ShowDropdown">
       <li class="nav-item" v-for="(menuItem, index) in menu" :key="index">
-        <router-link class="nav-link" :to="{name:menuItem.goto}" @click="ToggleDropdownNavItem" @mouseover="ShowText"><span :class="menuItem.icon"></span><span class="text">{{menuItem.text}}</span></router-link>
+        <router-link class="nav-link" :to="{name:menuItem.goto}" @click="ToggleDropdownNavItem"><span :class="menuItem.icon"></span><span class="text">{{menuItem.text}}</span></router-link>
       </li>
     </ul>
   </nav>
@@ -89,10 +89,6 @@ export default {
         return
       }
       this.ShowDropdown = false
-    },
-    ShowText (e) {
-      const text = document.querySelectorAll('.text')
-      console.log(text)
     }
   }
 }

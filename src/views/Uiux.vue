@@ -1,7 +1,7 @@
 <template>
-  <section class="container" v-if="desktopView">
-    <Tabs :selected="selected" @selected="setSelected" :tabs="uiuxTabArray">
-      <div v-for="(item, index) in uiuxFB" :key="index" class="gallery">
+  <section class="container" v-if="desktopView" ref="containerWidth">
+    <Tabs :selected="selected" @selected="setSelected" :tabs="uiuxTabArray" ref="childData">
+      <div v-for="(item, index) in uiuxFB" :key="index" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}">
         <UiuxDetail :isSelected="selected === item.title "><img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs"></UiuxDetail>
       </div>
     </Tabs>
@@ -26,12 +26,24 @@ export default {
   data () {
     return {
       selected: 'Single Sign On',
-      desktopView: null
+      desktopView: null,
+      tabULwidth: null,
+      allWidth: null
     }
+  },
+  mounted () {
+    this.tabULwidth = this.$refs.childData.$data.tabWrapperWidth
+    this.allWidth = this.$refs.containerWidth.clientWidth
   },
   computed: {
     ...mapGetters(['uiuxTabArray']),
-    ...mapState(['uiuxFB'])
+    ...mapState(['uiuxFB']),
+    CalGalleryWidth () {
+      return this.allWidth - this.tabULwidth
+    },
+    CalGalleryLeft () {
+      return this.tabULwidth
+    }
   },
   created () {
     this.GET_UIUX()
@@ -52,20 +64,6 @@ export default {
       this.desktopView = false
     }
   }
-  // created () {
-  //   firedb.collection('uiux').get().then((snapshot) => {
-  //     snapshot.docs.forEach(doc => {
-  //       const uiuxList = document.querySelector('.dropdown-wrapper')
-  //       const item = document.createElement('div')
-  //       const link = document.createElement('a')
-  //       item.className = 'dropdown-item'
-  //       link.setAttribute('uiux-id', doc.id)
-  //       link.textContent = doc.data().title
-  //       item.appendChild(link)
-  //       uiuxList.appendChild(item)
-  //     })
-  //   })
-  // }
 }
 </script>
 
@@ -78,10 +76,6 @@ export default {
   width: 90%;
   margin: 80px auto 0;
   text-align: center;
-}
-.gallery{
-  max-width: 80%;
-  margin-left: 170px;
 }
 .mobile-gallery{
   margin-bottom: 20px;
