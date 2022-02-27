@@ -1,8 +1,8 @@
 <template>
-  <section class="container" v-if="desktopView" ref="containerWidth">
+  <section class="container" v-if="desktopView">
     <Tabs :selected="selected" @selected="setSelected" :tabs="uiuxTabArray" ref="childData">
       <div v-for="(item, index) in uiuxFB" :key="index" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}">
-        <UiuxDetail :isSelected="selected === item.title "><img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs"></UiuxDetail>
+        <UiuxDetail :isSelected="selected === item.title"><img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs"></UiuxDetail>
       </div>
     </Tabs>
   </section>
@@ -31,24 +31,20 @@ export default {
       allWidth: null
     }
   },
-  mounted () {
-    this.tabULwidth = this.$refs.childData.$data.tabWrapperWidth
-    this.allWidth = this.$refs.containerWidth.clientWidth
-  },
-  computed: {
-    ...mapGetters(['uiuxTabArray']),
-    ...mapState(['uiuxFB']),
-    CalGalleryWidth () {
-      return this.allWidth - this.tabULwidth
-    },
-    CalGalleryLeft () {
-      return this.tabULwidth
-    }
-  },
   created () {
     this.GET_UIUX()
     this.CheckScreen()
     window.addEventListener('resize', this.CheckScreen)
+  },
+  computed: {
+    ...mapGetters(['uiuxTabArray']),
+    ...mapState(['uiuxFB']),
+    CalGalleryLeft () {
+      return this.tabULwidth
+    },
+    CalGalleryWidth () {
+      return this.allWidth - this.tabULwidth
+    }
   },
   methods: {
     ...mapActions(['GET_UIUX']),
@@ -63,6 +59,10 @@ export default {
       }
       this.desktopView = false
     }
+  },
+  updated () {
+    this.allWidth = this.$el.clientWidth
+    this.tabULwidth = this.$refs.childData.$data.tabWrapperWidth
   }
 }
 </script>

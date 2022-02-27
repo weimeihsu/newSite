@@ -1,5 +1,5 @@
 <template>
-<ul class="tabs-wrapper" ref="tabWrapper">
+<ul class="tabs-wrapper" ref="wrapper">
   <li v-for="tab in tabs" :key="tab" class="tab-item" :class="{ active: tab === selected }"  @click="selectTab(tab)">
     <a>{{tab}}</a></li>
 </ul>
@@ -28,18 +28,21 @@ export default {
   computed: {
     ...mapState(['uiuxFB'])
   },
-  created () {
-    this.GET_UIUX()
-  },
   methods: {
     ...mapActions(['GET_UIUX']),
     selectTab (tab) {
       this.$emit('selected', tab)
+      // this.$emit('selected', tab) this 'selected' here is the @selected=... in the parent vue
     }
   },
+  created () {
+    this.GET_UIUX()
+  },
   mounted () {
-    this.tabWrapperWidth = this.$refs.tabWrapper.clientWidth
+    console.log(this.$refs.wrapper.clientWidth)
+  },
+  updated () {
+    this.tabWrapperWidth = this.$refs.wrapper.clientWidth
   }
-  // this.$emit('selected', tab) this 'selected' here is the @selected=... in the parent vue
 }
 </script>

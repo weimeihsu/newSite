@@ -54,18 +54,6 @@ export default {
       ]
     }
   },
-  setup () {
-    function handleTransition (item, text) {
-      item.addEventListener('transition', e => {
-        if (e.propertyName !== 'flex' ||
-        !item.classList.contains('active')) return
-
-        text.classList.add('active')
-      })
-    }
-    const text = document.querySelector('.text')
-    return { handleTransition, text }
-  },
   created () {
     this.CheckScreen()
     window.addEventListener('resize', this.CheckScreen)
