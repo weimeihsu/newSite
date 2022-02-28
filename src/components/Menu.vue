@@ -86,9 +86,6 @@ export default {
 @import '../assets/css/style.css';
 @import '../assets/css/fontstyle.css';
 
-/* .text{
-  display: none;
-} */
 .active .text, .router-link-active .text{
   display: block;
 }

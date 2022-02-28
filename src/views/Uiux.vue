@@ -1,11 +1,15 @@
 <template>
   <section class="container" v-if="desktopView">
-    <Tabs :selected="selected" @selected="setSelected" :tabs="uiuxTabArray" ref="childData">
-      <div v-for="(item, index) in uiuxFB" :key="index" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}">
-        <UiuxDetail :isSelected="selected === item.title"><img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs"></UiuxDetail>
-      </div>
-    </Tabs>
+    <ul class="tabs-wrapper" ref="tabWrapper">
+      <li v-for="(tab, index) in uiuxTabArray" :key="index" class="tab-item" :class="{ activeItem: isActive === tab }"  @click="selectTab(tab)"><a>{{tab}}</a></li>
+    </ul>
+    <div class="gallery" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}">
+      <div v-for="(item, index) in uiuxFB" :key="index" class="uiuxImg" :class="{ visible: isVisible === item.title }">
+      <img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs">
+    </div>
+    </div>
   </section>
+
   <section class="mobile-container" v-else>
     <div v-for="(item, index) in uiuxFB" :key="index" class="mobile-gallery">
       <h4>{{item.title}}</h4>
@@ -16,18 +20,16 @@
 
 <script>
 import { mapGetters, mapState, mapActions } from 'vuex'
-import Tabs from '../components/Tabs.vue'
-import UiuxDetail from '../components/UiuxDetail.vue'
 export default {
-  name: 'Uiux',
-  components: {
-    Tabs, UiuxDetail
-  },
+  name: 'Uiux2',
   data () {
     return {
-      selected: 'Single Sign On',
+      // selected: 'Single Sign On',
       desktopView: null,
-      tabULwidth: null,
+      isActive: 'Single Sign On',
+      isVisible: 'Single Sign On',
+      tabUlWidth: null,
+      galleryWidth: null,
       allWidth: null
     }
   },
@@ -36,20 +38,11 @@ export default {
     this.CheckScreen()
     window.addEventListener('resize', this.CheckScreen)
   },
-  computed: {
-    ...mapGetters(['uiuxTabArray']),
-    ...mapState(['uiuxFB']),
-    CalGalleryLeft () {
-      return this.tabULwidth
-    },
-    CalGalleryWidth () {
-      return this.allWidth - this.tabULwidth
-    }
-  },
   methods: {
     ...mapActions(['GET_UIUX']),
-    setSelected (tab) {
-      this.selected = tab
+    selectTab (tab) {
+      this.isActive = tab
+      this.isVisible = tab
     },
     CheckScreen () {
       const ScreenWidth = window.innerWidth
@@ -60,14 +53,39 @@ export default {
       this.desktopView = false
     }
   },
+  computed: {
+    ...mapGetters(['uiuxTabArray']),
+    ...mapState(['uiuxFB']),
+    CalGalleryLeft () {
+      return this.tabUlWidth
+    },
+    CalGalleryWidth () {
+      return this.allWidth - this.tabULwidth
+    }
+  },
   updated () {
-    this.allWidth = this.$el.clientWidth
-    this.tabULwidth = this.$refs.childData.$data.tabWrapperWidth
+    const ScreenWidth = window.innerWidth
+    if (ScreenWidth > 744) {
+      this.tabUlWidth = this.$refs.tabWrapper.clientWidth
+      this.allWidth = this.$el.clientWidth
+    } else {
+      this.tabUlWidth = null
+      this.allWidth = null
+    }
   }
 }
 </script>
 
 <style scoped>
+.activeItem {
+  border-bottom: #000000 1px solid;
+}
+.uiuxImg{
+  display: none;
+}
+.visible{
+  display: block;
+}
 .container{
   position: relative;
   margin: 60px auto 0;
@@ -76,6 +94,9 @@ export default {
   width: 90%;
   margin: 80px auto 0;
   text-align: center;
+}
+.uiuxImg img{
+  width: 100%;
 }
 .mobile-gallery{
   margin-bottom: 20px;
