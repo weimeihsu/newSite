@@ -80,6 +80,9 @@ export default {
 .activeItem {
   border-bottom: #000000 1px solid;
 }
+.activeItem a{
+  color: #000000;
+}
 .uiuxImg{
   display: none;
 }

@@ -11,11 +11,12 @@
       </svg>
       </div>
     </div>
-    <ul class="navbar-nav" v-show="ShowDropdown">
+    <transition name="dropdown">
+      <ul class="navbar-nav" v-show="ShowDropdown">
       <li class="nav-item" v-for="(menuItem, index) in menu" :key="index">
         <router-link class="nav-link" :to="{name:menuItem.goto}" @click="ToggleDropdownNavItem"><span :class="menuItem.icon"></span><span class="text">{{menuItem.text}}</span></router-link>
       </li>
-    </ul>
+    </ul></transition>
   </nav>
 </div>
 </template>
@@ -85,9 +86,13 @@ export default {
 <style>
 @import '../assets/css/style.css';
 @import '../assets/css/fontstyle.css';
-
 .active .text, .router-link-active .text{
   display: block;
 }
-
+.dropdown-enter-active,.dropdown-leave-active{
+  transition: 0.8s ease all;
+}
+.dropdown-enter-from,.dropdown-leave-to{
+  transform: translateY(-400px);
+}
 </style>

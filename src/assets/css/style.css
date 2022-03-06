@@ -68,13 +68,13 @@ a:hover {
 }
 
 .navbar-nav .nav-item {
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
   list-style: none;
 }
 
 .navbar-nav .nav-item .nav-link {
   padding: 20px 10px 18px 10px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
   text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -88,8 +88,16 @@ a:hover {
   margin-right: 10px;
 }
 
+.navbar-nav .nav-item .nav-link span:hover {
+  border-bottom: transparent;
+}
+
+.navbar-nav .nav-item :hover {
+  border-bottom: 1px solid #000000;
+}
+
 .router-link-active {
-  border-bottom: #000000 1px solid;
+  border-bottom: #000000 1px solid !important;
   color: #000000;
 }
 
@@ -106,24 +114,18 @@ a:hover {
 .tabs-wrapper .tab-item {
   text-decoration: none;
   font-size: 0.9rem;
-  color: #808080;
   padding: 24px 0 5px 0;
   border-bottom: transparent 1px solid;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 .tabs-wrapper .tab-item:hover {
   border-bottom: #000000 1px solid;
   cursor: pointer;
-  color: #000000;
 }
 
-.tabs-wrapper .active {
-  border-bottom: #000000 1px solid;
-}
-
-.tabs-wrapper .active a {
+.tabs-wrapper .tab-item:hover a {
   color: #000000;
 }
 
@@ -147,7 +149,7 @@ html {
 .container {
   width: 100%;
   max-width: 960px;
-  padding-top: 20px;
+  padding: 20px 20px 0 20px;
 }
 
 .flex-center {
@@ -169,7 +171,8 @@ html {
   }
   .navbar {
     display: block;
-    margin-top: 10px;
+    padding-top: 10px;
+    background-color: #fff;
   }
   .nav-brand {
     display: -webkit-box;
@@ -196,12 +199,15 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .navbar-nav .nav-item {
-    width: 100%;
+    position: absolute;
+    background-color: #fff;
+    z-index: -2;
   }
   .navbar-nav .nav-item .nav-link {
     width: 100%;
     text-align: center;
+  }
+  .navbar-nav .nav-item :hover {
+    border-bottom: 1px solid #000000;
   }
 }
