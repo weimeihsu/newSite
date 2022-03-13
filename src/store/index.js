@@ -114,7 +114,8 @@ const store = createStore({
             id: doc.id,
             title: doc.data().title,
             file: doc.data().file,
-            des: doc.data().des
+            des: doc.data().des,
+            thumb: doc.data().thumb
           }
           commit('SET_PDF_DATA', data)
         }

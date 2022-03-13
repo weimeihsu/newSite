@@ -28,13 +28,15 @@
     }
 }
 .navbar-nav{
-    width: 100%;
+    width: calc(100vw);
+    height: calc(100vh);
     flex-direction: column;
     position: absolute;
-    background-color: #fff;
+    background-color: rgba(0, 0 ,0, 0.5);
     z-index: -2;
     .nav-item{
-
+        padding: 0 10px;
+        background-color: #fff;
         .nav-link{
             width: 100%;
             text-align: center;

@@ -2,7 +2,7 @@
 <div class="fixed-wrapper">
 <nav class="navbar">
     <div class="nav-brand">
-      <router-link :to="{name:'Intro'}">@WeiMei.tw</router-link>
+      <router-link :to="{name:'Intro'}">@ WeiMei.tw</router-link>
       <div class="burger" @click="ToggleDropdown">
       <svg viewBox="0 0 24 20" width="24" height="20" class="burger-line">
       <rect width="24" height="2"></rect>

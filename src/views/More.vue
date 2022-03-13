@@ -1,9 +1,12 @@
 <template>
   <section class="container">
     <a v-for="(item, index) in pdfFB" :key="index" class="pdf" :href="item.file" target="_blank">
-        <h4>{{item.title}}</h4>
-        <p>{{item.des}}</p>
-        <span class="right">Click to view</span>
+        <img :src="item.thumb" alt="">
+        <div class="right-content">
+          <h4>{{item.title}}</h4>
+          <p>{{item.des}}</p>
+          <span class="click">Click to view</span>
+        </div>
     </a>
   </section>
 </template>
@@ -35,12 +38,21 @@ export default {
   border: 1px solid #cccccc;
   padding: 20px;
   display: flex;
-  flex-direction: column;
+}
+.pdf img{
+  max-width: 150px;
+  margin-right: 20px;
 }
 .pdf:hover{
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
-.right{
+.right-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.click{
+  align-self: flex-end;
   text-align: right;
   font-size: 14px;
   margin-top: 10px;
