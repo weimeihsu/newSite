@@ -41,7 +41,9 @@ export default {
 }
 .pdf img{
   max-width: 150px;
+  max-height: 150px;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 .pdf:hover{
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -56,5 +58,10 @@ export default {
   text-align: right;
   font-size: 14px;
   margin-top: 10px;
+}
+@media (max-width: 400px){
+    .pdf{
+        flex-direction: column;
+    }
 }
 </style>
