@@ -100,6 +100,7 @@ export default {
 }
 .uiuxImg img{
   width: 100%;
+  margin-bottom: 50px;
 }
 .mobile-gallery{
   margin-bottom: 20px;
