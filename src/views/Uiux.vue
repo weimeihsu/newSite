@@ -24,10 +24,10 @@ export default {
   name: 'Uiux2',
   data () {
     return {
-      // selected: 'Single Sign On',
+      // default selected: 'Dynamic Chart Design',
       desktopView: null,
-      isActive: 'Single Sign On',
-      isVisible: 'Single Sign On',
+      isActive: 'Dynamic Chart Design',
+      isVisible: 'Dynamic Chart Design',
       tabUlWidth: null,
       galleryWidth: null,
       allWidth: null

@@ -104,7 +104,6 @@ a:hover {
 
 .tabs-wrapper {
   position: fixed;
-  border-right: 1px solid #eaecef;
   background: white;
   list-style: none;
   margin-top: -20px;
