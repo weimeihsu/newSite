@@ -82,7 +82,8 @@ const store = createStore({
           const data = {
             id: doc.id,
             title: doc.data().title,
-            img: doc.data().img
+            img: doc.data().img,
+            thumb: doc.data().thumb
           }
           commit('SET_GRAPHIC_DESIGN_DATA', data)
         }

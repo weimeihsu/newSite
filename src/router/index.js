@@ -4,6 +4,7 @@ import Uiux from '../views/Uiux'
 import Experience from '../views/Experience'
 import Intro from '../views/Intro'
 import More from '../views/More'
+import GraphicWeb from '../views/GraphicWeb'
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: '/GraphicDesign',
     name: 'GraphicDesign',
     component: GraphicDesign
+  },
+  {
+    path: '/GraphicWeb',
+    name: 'GraphicWeb',
+    component: GraphicWeb
   },
   {
     path: '/Uiux',

@@ -38,6 +38,11 @@ export default {
           icon: 'icon-icon_graphic-design'
         },
         {
+          goto: 'GraphicWeb',
+          text: 'Graphic & Web',
+          icon: 'icon-icon_graphic-design'
+        },
+        {
           goto: 'Uiux',
           text: 'UIUX',
           icon: 'icon-icon_uiux'
