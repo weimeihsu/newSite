@@ -8,14 +8,20 @@
     margin:0;
 
 }
+h2{
+    color: $active;
+    display: block;
+}
 h4{
     margin-bottom: 5px;
+    color: $active;
 }
 
 html{
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: $main
   }
 
 

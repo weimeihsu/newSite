@@ -26,6 +26,10 @@
 
 .icon-icon_close:before {
   content: "\e900";
+  color: #808080;
+}
+.icon-icon_close:hover{
+  cursor: pointer;
 }
 .icon-icon_open:before {
   content: "\e901";
