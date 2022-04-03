@@ -7,6 +7,13 @@
             <p>{{item.title}}</p>
         </div>
       </div>
+      <h2>Web Design</h2>
+      <div class="thumb-container">
+        <div v-for="(item, index) in webFB" :key="index" class="thumb">
+          <a :href="item.url" target="_blank"><img :src="item.thumb" :alt="item.title"></a>
+          <p>{{item.title}}</p>
+        </div>
+      </div>
     </section>
     <div class="backdrop" v-show="showPopup" @click.self="closePopup()">
       <div class="modal">
@@ -33,13 +40,14 @@ export default {
   },
   // components: { GraphicModal },
   computed: {
-    ...mapState(['graphicDesignFB'])
+    ...mapState(['graphicDesignFB', 'webFB'])
   },
   created () {
     this.GET_GRAPHIC_DESIGN()
+    this.GET_WEB()
   },
   methods: {
-    ...mapActions(['GET_GRAPHIC_DESIGN']),
+    ...mapActions(['GET_GRAPHIC_DESIGN', 'GET_WEB']),
     enlarge (item) {
       this.showPopup = !this.showPopup
       this.popupImg = item.img
@@ -62,7 +70,9 @@ h2{
 .thumb-container{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 .thumb{
     width: 30%;
@@ -101,5 +111,14 @@ h2{
 .modal img{
     max-width: 100%;
     margin: 0 auto;
+}
+@media (max-width: 744px) {
+.thumb-container{
+  flex-direction: column;
+  align-content: center;
+}
+.thumb{
+  width: 100%;
+}
 }
 </style>

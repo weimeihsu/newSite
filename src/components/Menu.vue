@@ -33,11 +33,6 @@ export default {
       ShowDropdown: null,
       menu: [
         {
-          goto: 'GraphicDesign',
-          text: 'Graphic Design',
-          icon: 'icon-icon_graphic-design'
-        },
-        {
           goto: 'GraphicWeb',
           text: 'Graphic & Web',
           icon: 'icon-icon_graphic-design'

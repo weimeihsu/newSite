@@ -8,8 +8,10 @@ const store = createStore({
     graphicDesignFB: [],
     pdfFB: [],
     uiuxFB: [],
+    webFB: [],
     expcsLoaded: null,
     graphicDesignLoaded: null,
+    webLoaded: null,
     uiuxLoaded: null,
     pdfLoaded: null,
     slidesLength: null
@@ -47,10 +49,15 @@ const store = createStore({
     },
     SET_PDF_DATA (state, payload) {
       state.pdfFB.push(payload)
-      // console.log(state.expcsFB);  check if data is retrieved from firebase
     },
     PDF_LOADED (state) {
       state.pdfLoaded = true
+    },
+    SET_WEB_DATA (state, payload) {
+      state.webFB.push(payload)
+    },
+    WEB_LOADED (state) {
+      state.webLoaded = true
     }
   },
   actions: {
@@ -122,6 +129,22 @@ const store = createStore({
         }
       })
       commit('PDF_LOADED')
+    },
+    async GET_WEB ({ commit, state }) {
+      const getData = firedb.collection('web')
+      const result = await getData.get()
+      result.forEach(doc => {
+        if (!state.webFB.some(webSet => webSet.id === doc.id)) {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            thumb: doc.data().thumb,
+            url: doc.data().url
+          }
+          commit('SET_WEB_DATA', data)
+        }
+      })
+      commit('WEB_LOADED')
     }
   }
 })
