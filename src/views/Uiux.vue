@@ -1,13 +1,9 @@
 <template>
   <section class="container" v-if="desktopView">
     <ul class="tabs-wrapper" ref="tabWrapper">
-      <li v-for="(tab, index) in uiuxTabArray" :key="index" class="tab-item" :class="{ activeItem: isActive === tab }"  @click="selectTab(tab)"><a>{{tab}}</a></li>
+      <li v-for="(item, index) in uiuxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
-    <div class="gallery" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}">
-      <div v-for="(item, index) in uiuxFB" :key="index" class="uiuxImg" :class="{ visible: isVisible === item.title }">
-      <img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs">
-    </div>
-    </div>
+    <div class="gallery" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}" v-for="(img, index) in imgShow" :key="index"><img :src="img" alt=""></div>
   </section>
 
   <section class="mobile-container" v-else>
@@ -19,7 +15,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Uiux2',
   data () {
@@ -27,7 +23,7 @@ export default {
       // default selected: 'Dynamic Chart Design',
       desktopView: null,
       isActive: 'Dynamic Chart Design',
-      isVisible: 'Dynamic Chart Design',
+      imgShow: [],
       tabUlWidth: null,
       galleryWidth: null,
       allWidth: null
@@ -40,9 +36,9 @@ export default {
   },
   methods: {
     ...mapActions(['GET_UIUX']),
-    selectTab (tab) {
-      this.isActive = tab
-      this.isVisible = tab
+    selectTab (item) {
+      this.imgShow = item.img
+      this.isActive = item.title
     },
     CheckScreen () {
       const ScreenWidth = window.innerWidth
@@ -53,8 +49,10 @@ export default {
       this.desktopView = false
     }
   },
+  mounted () {
+    this.imgShow = this.$store.state.uiuxFB[0].img
+  },
   computed: {
-    ...mapGetters(['uiuxTabArray']),
     ...mapState(['uiuxFB']),
     CalGalleryLeft () {
       return this.tabUlWidth
@@ -98,7 +96,7 @@ export default {
   margin: 80px auto 0;
   text-align: center;
 }
-.uiuxImg img{
+.gallery img{
   width: 100%;
   margin-bottom: 50px;
 }

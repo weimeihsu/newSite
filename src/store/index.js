@@ -19,9 +19,6 @@ const store = createStore({
   getters: {
     slideLength (state) {
       return state.graphicDesignFB.length
-    },
-    uiuxTabArray (state) {
-      return state.uiuxFB.map(uiuxTab => { return uiuxTab.title })
     }
   },
   mutations: {
