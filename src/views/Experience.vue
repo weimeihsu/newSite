@@ -24,14 +24,14 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Experience',
-  computed: {
-    ...mapState(['expcsFB'])
-  },
   created () {
     this.GET_EXPCS()
   },
   methods: {
     ...mapActions(['GET_EXPCS'])
+  },
+  computed: {
+    ...mapState(['expcsFB'])
   }
 }
 </script>

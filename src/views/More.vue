@@ -17,14 +17,14 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'More',
-  computed: {
-    ...mapState(['pdfFB'])
-  },
   created () {
     this.GET_PDF()
   },
   methods: {
     ...mapActions(['GET_PDF'])
+  },
+  computed: {
+    ...mapState(['pdfFB'])
   }
 }
 </script>

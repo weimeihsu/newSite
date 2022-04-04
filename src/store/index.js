@@ -8,6 +8,7 @@ const store = createStore({
     graphicDesignFB: [],
     pdfFB: [],
     uiuxFB: [],
+    uiuxDefaultImg: [],
     webFB: [],
     expcsLoaded: null,
     graphicDesignLoaded: null,

@@ -7,7 +7,7 @@
             <p>{{item.title}}</p>
         </div>
       </div>
-      <h2>Web Design</h2>
+      <h2>Web Design & Anime</h2>
       <div class="thumb-container">
         <div v-for="(item, index) in webFB" :key="index" class="thumb">
           <a :href="item.url" target="_blank"><img :src="item.thumb" :alt="item.title"></a>
@@ -24,11 +24,9 @@
         <img :src="popupImg" :alt="popupTitle">
       </div>
     </div>
-      <!-- <GraphicModal :popupImg="popupImg"/> -->
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
-// import GraphicModal from '../components/GraphicModal.vue'
 export default {
   name: 'GraphicWeb',
   data () {
@@ -37,10 +35,6 @@ export default {
       popupTitle: null,
       showPopup: false
     }
-  },
-  // components: { GraphicModal },
-  computed: {
-    ...mapState(['graphicDesignFB', 'webFB'])
   },
   created () {
     this.GET_GRAPHIC_DESIGN()
@@ -56,6 +50,9 @@ export default {
     closePopup () {
       this.showPopup = false
     }
+  },
+  computed: {
+    ...mapState(['graphicDesignFB', 'webFB'])
   }
 }
 </script>

@@ -3,7 +3,8 @@
     <ul class="tabs-wrapper" ref="tabWrapper">
       <li v-for="(item, index) in uiuxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
-    <div class="gallery" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}" v-for="(img, index) in imgShow" :key="index"><img :src="img" alt=""></div>
+    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><img v-for="(img, index) in imgShow" :key="index" :src="img" alt="">
+    </div>
   </section>
 
   <section class="mobile-container" v-else>
@@ -17,16 +18,15 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'Uiux2',
+  name: 'Uiux',
   data () {
     return {
       // default selected: 'Dynamic Chart Design',
       desktopView: null,
       isActive: 'Dynamic Chart Design',
-      imgShow: [],
-      tabUlWidth: null,
-      galleryWidth: null,
-      allWidth: null
+      imgShow: ['https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fcharts.png?alt=media&token=62b334e2-7b8b-4495-ae98-98a4ff1a9ac3', 'https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fchart%20property.jpg?alt=media&token=bc344ea3-3285-49d5-90e2-b89faf3a4e37'],
+      ulWidth: 0,
+      allWidth: 0
     }
   },
   created () {
@@ -36,10 +36,6 @@ export default {
   },
   methods: {
     ...mapActions(['GET_UIUX']),
-    selectTab (item) {
-      this.imgShow = item.img
-      this.isActive = item.title
-    },
     CheckScreen () {
       const ScreenWidth = window.innerWidth
       if (ScreenWidth > 744) {
@@ -47,27 +43,38 @@ export default {
         return
       }
       this.desktopView = false
+    },
+    selectTab (item) {
+      this.isActive = item.title
+      this.imgShow = item.img
     }
-  },
-  mounted () {
-    this.imgShow = this.$store.state.uiuxFB[0].img
   },
   computed: {
     ...mapState(['uiuxFB']),
     CalGalleryLeft () {
-      return this.tabUlWidth
+      return this.ulWidth
     },
     CalGalleryWidth () {
-      return this.allWidth - this.tabULwidth
+      return this.allWidth - this.ulWidth
+    }
+  },
+  mounted () {
+    const ScreenWidth = window.innerWidth
+    if (ScreenWidth > 744) {
+      this.ulWidth = this.$refs.tabWrapper.clientWidth
+      this.allWidth = this.$el.clientWidth
+    } else {
+      this.ulWidth = null
+      this.allWidth = null
     }
   },
   updated () {
     const ScreenWidth = window.innerWidth
     if (ScreenWidth > 744) {
-      this.tabUlWidth = this.$refs.tabWrapper.clientWidth
+      this.ulWidth = this.$refs.tabWrapper.clientWidth
       this.allWidth = this.$el.clientWidth
     } else {
-      this.tabUlWidth = null
+      this.ulWidth = null
       this.allWidth = null
     }
   }
@@ -81,8 +88,9 @@ export default {
 .activeItem a{
   color: #000000;
 }
-.uiuxImg{
-  display: none;
+.uiuxImg img{
+  max-width: 100%;
+  margin-bottom: 50px;
 }
 .visible{
   display: block;
