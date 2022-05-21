@@ -3,7 +3,8 @@
     <ul class="tabs-wrapper" ref="tabWrapper">
       <li v-for="(item, index) in uiuxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
-    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><img v-for="(img, index) in imgShow" :key="index" :src="img" alt="">
+    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><div v-if="mediaType === 'img'"><img v-for="(img, index) in imgShow" :key="index" :src="img" alt=""></div>
+    <div v-if="mediaType === 'vdo'"><a href="https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/vdo%2F%E2%96%B6%20Prototype%20-%20App%20Studio.mp4?alt=media&token=5f4ac1b5-2a4c-400f-a5b5-6394d6b2bfa4" target="_blank" class="thumb"><img src="https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2F0.intro.png?alt=media&token=6f4a98f3-4da2-498f-9c44-174511231f72"></a></div>
     </div>
   </section>
 
@@ -26,7 +27,8 @@ export default {
       isActive: 'Dynamic Chart Design',
       imgShow: ['https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fcharts.png?alt=media&token=62b334e2-7b8b-4495-ae98-98a4ff1a9ac3', 'https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fchart%20property.jpg?alt=media&token=bc344ea3-3285-49d5-90e2-b89faf3a4e37'],
       ulWidth: 0,
-      allWidth: 0
+      allWidth: 0,
+      mediaType: 'img'
     }
   },
   created () {
@@ -47,6 +49,7 @@ export default {
     selectTab (item) {
       this.isActive = item.title
       this.imgShow = item.img
+      this.mediaType = item.media
     }
   },
   computed: {
@@ -92,6 +95,18 @@ export default {
   max-width: 100%;
   margin-bottom: 50px;
 }
+.thumb img{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid transparent;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.thumb img:hover{
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
 .visible{
   display: block;
 }

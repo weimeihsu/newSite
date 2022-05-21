@@ -104,7 +104,8 @@ const store = createStore({
             id: doc.id,
             title: doc.data().title,
             img: doc.data().img,
-            tab: doc.data().tab
+            tab: doc.data().tab,
+            media: doc.data().media
           }
           commit('SET_UIUX_DATA', data)
         }
