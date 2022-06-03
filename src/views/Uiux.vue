@@ -9,7 +9,7 @@
       <li v-for="(item, index) in prototypeFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
     <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><div v-if="arrayImg"><img v-for="(img, index) in imgShow" :key="index" :src="img"></div>
-    <div v-else><a :href="imgUrl"><img :src="imgShow"></a></div>
+    <div v-else><a :href="imgUrl" target="_blank"><img :src="imgShow"></a></div>
     </div>
   </section>
 
