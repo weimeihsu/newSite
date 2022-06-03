@@ -1,10 +1,15 @@
 <template>
   <section class="container" v-if="desktopView">
     <ul class="tabs-wrapper" ref="tabWrapper">
+      <span class="label">User Interface</span>
       <li v-for="(item, index) in uiuxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
+      <span class="label">User Journey</span>
+      <li v-for="(item, index) in uxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
+      <span class="label">Prototype</span>
+      <li v-for="(item, index) in prototypeFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
-    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><div v-if="mediaType === 'img'"><img v-for="(img, index) in imgShow" :key="index" :src="img" alt=""></div>
-    <div v-if="mediaType === 'vdo'"><a href="https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/vdo%2F%E2%96%B6%20Prototype%20-%20App%20Studio.mp4?alt=media&token=5f4ac1b5-2a4c-400f-a5b5-6394d6b2bfa4" target="_blank" class="thumb"><img src="https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2F0.intro.png?alt=media&token=6f4a98f3-4da2-498f-9c44-174511231f72"></a></div>
+    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><div v-if="arrayImg"><img v-for="(img, index) in imgShow" :key="index" :src="img"></div>
+    <div v-else><a :href="imgUrl"><img :src="imgShow"></a></div>
     </div>
   </section>
 
@@ -26,18 +31,21 @@ export default {
       desktopView: null,
       isActive: 'Dynamic Chart Design',
       imgShow: ['https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fcharts.png?alt=media&token=62b334e2-7b8b-4495-ae98-98a4ff1a9ac3', 'https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fchart%20property.jpg?alt=media&token=bc344ea3-3285-49d5-90e2-b89faf3a4e37'],
+      arrayImg: true,
+      imgUrl: null,
       ulWidth: 0,
-      allWidth: 0,
-      mediaType: 'img'
+      allWidth: 0
     }
   },
   created () {
     this.GET_UIUX()
+    this.GET_UX()
+    this.GET_PROTOTYPE()
     this.CheckScreen()
     window.addEventListener('resize', this.CheckScreen)
   },
   methods: {
-    ...mapActions(['GET_UIUX']),
+    ...mapActions(['GET_UIUX', 'GET_UX', 'GET_PROTOTYPE']),
     CheckScreen () {
       const ScreenWidth = window.innerWidth
       if (ScreenWidth > 744) {
@@ -49,11 +57,12 @@ export default {
     selectTab (item) {
       this.isActive = item.title
       this.imgShow = item.img
-      this.mediaType = item.media
+      this.imgUrl = item.url
+      this.arrayImg = item.arrayImg
     }
   },
   computed: {
-    ...mapState(['uiuxFB']),
+    ...mapState(['uiuxFB', 'uxFB', 'prototypeFB']),
     CalGalleryLeft () {
       return this.ulWidth
     },
@@ -86,10 +95,13 @@ export default {
 
 <style scoped>
 .activeItem {
-  border-bottom: #000000 1px solid;
+  border-left: #000000 2px solid;
 }
 .activeItem a{
   color: #000000;
+}
+.uiuxImg{
+  margin-top: 61px;
 }
 .uiuxImg img{
   max-width: 100%;
@@ -107,12 +119,22 @@ export default {
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
+.label{
+  font-size: 12px;
+  font-weight: 700;
+  color: #000000;
+  padding: 10px;
+  border-top: 1px dashed #808080;
+  width: 100%;
+  display: block;
+}
 .visible{
   display: block;
 }
 .container{
   position: relative;
-  margin: 60px auto 0;
+  margin:0 auto;
+  padding: 0;
 }
 .mobile-container{
   width: 90%;

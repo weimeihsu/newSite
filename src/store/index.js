@@ -8,12 +8,15 @@ const store = createStore({
     graphicDesignFB: [],
     pdfFB: [],
     uiuxFB: [],
-    uiuxDefaultImg: [],
+    uxFB: [],
+    prototypeFB: [],
     webFB: [],
     expcsLoaded: null,
     graphicDesignLoaded: null,
     webLoaded: null,
     uiuxLoaded: null,
+    uxLoaded: null,
+    prototypeLoaded: null,
     pdfLoaded: null,
     slidesLength: null
   },
@@ -44,6 +47,18 @@ const store = createStore({
     },
     UIUX_LOADED (state) {
       state.uiuxLoaded = true
+    },
+    SET_UX_DATA (state, payload) {
+      state.uxFB.push(payload)
+    },
+    UX_LOADED (state) {
+      state.uxLoaded = true
+    },
+    SET_PROTOTYPE_DATA (state, payload) {
+      state.prototypeFB.push(payload)
+    },
+    PROTOTYPE_LOADED (state) {
+      state.prototypeLoaded = true
     },
     SET_PDF_DATA (state, payload) {
       state.pdfFB.push(payload)
@@ -105,12 +120,47 @@ const store = createStore({
             title: doc.data().title,
             img: doc.data().img,
             tab: doc.data().tab,
-            media: doc.data().media
+            arrayImg: doc.data().arrayImg
           }
           commit('SET_UIUX_DATA', data)
         }
       })
       commit('UIUX_LOADED')
+    },
+    async GET_UX ({ commit, state }) {
+      const getData = firedb.collection('ux')
+      const result = await getData.get()
+      result.forEach(doc => {
+        if (!state.uxFB.some(uxSet => uxSet.id === doc.id)) {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            img: doc.data().img,
+            tab: doc.data().tab,
+            arrayImg: doc.data().arrayImg
+          }
+          commit('SET_UX_DATA', data)
+        }
+      })
+      commit('UX_LOADED')
+    },
+    async GET_PROTOTYPE ({ commit, state }) {
+      const getData = firedb.collection('prototype')
+      const result = await getData.get()
+      result.forEach(doc => {
+        if (!state.prototypeFB.some(prototypeSet => prototypeSet.id === doc.id)) {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            img: doc.data().img,
+            tab: doc.data().tab,
+            url: doc.data().url,
+            arrayImg: doc.data().arrayImg
+          }
+          commit('SET_PROTOTYPE_DATA', data)
+        }
+      })
+      commit('PROTOTYPE_LOADED')
     },
     async GET_PDF ({ commit, state }) {
       const getData = firedb.collection('pdf')
