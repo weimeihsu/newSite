@@ -108,6 +108,7 @@ h2{
 }
 .modal-img{
    overflow: scroll;
+   text-align: center;
 }
 .modal img{
     max-width: 100%;
