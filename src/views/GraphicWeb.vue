@@ -21,7 +21,7 @@
           <h4>{{popupTitle}}</h4>
           <span class="icon-icon_close" @click.self="closePopup()"></span>
         </div>
-        <img :src="popupImg" :alt="popupTitle">
+        <div class="modal-img"><img :src="popupImg" :alt="popupTitle"></div>
       </div>
     </div>
 </template>
@@ -98,12 +98,16 @@ h2{
 }
 .modal{
     width: 80vw;
+    height: 80vh;
     padding:20px;
     background: #fff;
     border-radius: 10px;
     margin: 15vh auto;
     display: flex;
     flex-direction: column;
+}
+.modal-img{
+   overflow: scroll;
 }
 .modal img{
     max-width: 100%;
