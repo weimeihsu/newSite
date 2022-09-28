@@ -30,7 +30,7 @@ export default {
       // default selected: 'Dynamic Chart Design',
       desktopView: null,
       isActive: 'Dynamic Chart Design',
-      imgShow: ['https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fcharts.png?alt=media&token=62b334e2-7b8b-4495-ae98-98a4ff1a9ac3', 'https://firebasestorage.googleapis.com/v0/b/my-vue-8743f.appspot.com/o/uiuxImage%2Fchart%20property.jpg?alt=media&token=bc344ea3-3285-49d5-90e2-b89faf3a4e37'],
+      imgShow: ['https://firebasestorage.googleapis.com/v0/b/for-test-purpose-3c71e.appspot.com/o/charts.png?alt=media&token=3716bf49-5c0e-4d8f-9237-1c4a0af2dcc3', 'https://firebasestorage.googleapis.com/v0/b/for-test-purpose-3c71e.appspot.com/o/chart%20data.jpg?alt=media&token=ad5572c1-13f8-4b89-b6c4-014dc46ce336'],
       arrayImg: true,
       imgUrl: null,
       ulWidth: 0,
