@@ -1,5 +1,9 @@
 <template>
-  <p>{{ $route.params.id }}</p>
+  <section>
+    <slot name="ui"></slot>
+    <slot name="ux"></slot>
+    <slot name="prototype"></slot>
+  </section>
 </template>
 
 <script>

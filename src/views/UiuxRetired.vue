@@ -1,7 +1,11 @@
 <template>
   <section class="container">
-   <Tabs/><UiuxDetail/>
-   <p>view{{ $route.params.id }}</p>
+   <Tabs/>
+   <UiuxDetail>
+    <template #ui>{{ $route.params.id }}</template>
+    <template #ux>{{ $route.params.id }}</template>
+    <template #prototype>{{ $route.params.id }}</template>
+   </UiuxDetail>
   </section>
 </template>
 
@@ -16,7 +20,6 @@ export default {
   },
   data () {
     return {
-      selected: 'Single Sign On',
       desktopView: null,
       tabULwidth: null,
       allWidth: null
