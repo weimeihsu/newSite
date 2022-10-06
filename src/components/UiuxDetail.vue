@@ -1,17 +1,10 @@
 <template>
-  <div v-if="isSelected" class="uiux-imgs">
-    <slot></slot>
-  </div>
+  <p>{{ $route.params.id }}</p>
 </template>
 
 <script>
 export default {
-  name: 'UiuxDetail',
-  props: {
-    isSelected: {
-      type: Boolean
-    }
-  }
+  name: 'UiuxDetail'
 }
 </script>
 <style>
