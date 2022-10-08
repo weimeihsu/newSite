@@ -27,10 +27,10 @@ export default {
   name: 'Uiux',
   data () {
     return {
-      // default selected: 'Dynamic Chart Design',
+      // default selected: 'UI Style Guide',
       desktopView: null,
-      isActive: 'Dynamic Chart Design',
-      imgShow: ['https://firebasestorage.googleapis.com/v0/b/for-test-purpose-3c71e.appspot.com/o/charts.png?alt=media&token=3716bf49-5c0e-4d8f-9237-1c4a0af2dcc3', 'https://firebasestorage.googleapis.com/v0/b/for-test-purpose-3c71e.appspot.com/o/chart%20data.jpg?alt=media&token=ad5572c1-13f8-4b89-b6c4-014dc46ce336'],
+      isActive: 'UI Style Guide',
+      imgShow: ['https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/styleGuide/StyleGuide_Button_Variant.jpg', 'https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/styleGuide/StyleGuide_Icons.jpg'],
       arrayImg: true,
       imgUrl: null,
       ulWidth: 0,

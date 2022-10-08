@@ -107,7 +107,7 @@ h2{
     flex-direction: column;
 }
 .modal-img{
-   overflow: scroll;
+   overflow-y: scroll;
    text-align: center;
 }
 .modal img{
