@@ -1,5 +1,6 @@
 <template>
     <section class="container">
+      <h2>Prototype</h2>
       <div class="thumb-container">
         <div v-for="(item, index) in prototypeFB" :key="index" class="thumb">
           <a :href="item.url" target="_blank"><img :src="item.img" :alt="item.title"></a>

@@ -97,7 +97,7 @@ export default {
 }
 .uiuxImg img{
   max-width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .thumb img{
     margin: 10px;
