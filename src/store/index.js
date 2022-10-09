@@ -7,14 +7,14 @@ const store = createStore({
     expcsFB: [],
     graphicDesignFB: [],
     pdfFB: [],
-    uiuxFB: [],
+    uiFB: [],
     uxFB: [],
     prototypeFB: [],
     webFB: [],
     expcsLoaded: null,
     graphicDesignLoaded: null,
     webLoaded: null,
-    uiuxLoaded: null,
+    uiLoaded: null,
     uxLoaded: null,
     prototypeLoaded: null,
     pdfLoaded: null,
@@ -41,12 +41,12 @@ const store = createStore({
       state.graphicDesignLoaded = true
       state.slidesLength = state.graphicDesignFB.length
     },
-    SET_UIUX_DATA (state, payload) {
-      state.uiuxFB.push(payload)
-      // console.log(state.uiuxFB)
+    SET_UI_DATA (state, payload) {
+      state.uiFB.push(payload)
+      // console.log(state.uiFB)
     },
-    UIUX_LOADED (state) {
-      state.uiuxLoaded = true
+    UI_LOADED (state) {
+      state.uiLoaded = true
     },
     SET_UX_DATA (state, payload) {
       state.uxFB.push(payload)
@@ -110,11 +110,11 @@ const store = createStore({
       })
       commit('GRAPHIC_DESIGN_LOADED')
     },
-    async GET_UIUX ({ commit, state }) {
-      const getData = firedb.collection('uiux')
+    async GET_UI ({ commit, state }) {
+      const getData = firedb.collection('ui')
       const result = await getData.get()
       result.forEach(doc => {
-        if (!state.uiuxFB.some(uiuxSet => uiuxSet.id === doc.id)) {
+        if (!state.uiFB.some(uiSet => uiSet.id === doc.id)) {
           const data = {
             id: doc.id,
             title: doc.data().title,
@@ -122,10 +122,10 @@ const store = createStore({
             tab: doc.data().tab,
             arrayImg: doc.data().arrayImg
           }
-          commit('SET_UIUX_DATA', data)
+          commit('SET_UI_DATA', data)
         }
       })
-      commit('UIUX_LOADED')
+      commit('UI_LOADED')
     },
     async GET_UX ({ commit, state }) {
       const getData = firedb.collection('ux')

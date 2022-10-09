@@ -43,6 +43,11 @@ export default {
           icon: 'icon-icon_uiux'
         },
         {
+          goto: 'Prototype',
+          text: 'Prototype',
+          icon: 'icon-icon_vdo'
+        },
+        {
           goto: 'More',
           text: 'And More',
           icon: 'icon-icon_more'

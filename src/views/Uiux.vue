@@ -2,19 +2,16 @@
   <section class="container" v-if="desktopView">
     <ul class="tabs-wrapper" ref="tabWrapper">
       <span class="label">User Interface</span>
-      <li v-for="(item, index) in uiuxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
+      <li v-for="(item, index) in uiFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
       <span class="label">User Journey</span>
       <li v-for="(item, index) in uxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
-      <span class="label">Prototype</span>
-      <li v-for="(item, index) in prototypeFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
-    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><div v-if="arrayImg"><img v-for="(img, index) in imgShow" :key="index" :src="img"></div>
-    <div v-else><a :href="imgUrl" target="_blank"><img :src="imgShow"></a></div>
+    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><img v-for="(img, index) in imgShow" :key="index" :src="img">
     </div>
   </section>
 
   <section class="mobile-container" v-else>
-    <div v-for="(item, index) in uiuxFB" :key="index" class="mobile-gallery">
+    <div v-for="(item, index) in uiFB" :key="index" class="mobile-gallery">
       <h4>{{item.title}}</h4>
       <img v-for="(imgs, imgindex) in item.img" :key="imgindex" :src="imgs">
     </div>
@@ -30,22 +27,19 @@ export default {
       // default selected: 'UI Style Guide',
       desktopView: null,
       isActive: 'UI Style Guide',
-      imgShow: ['https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/styleGuide/StyleGuide_Button_Variant.jpg', 'https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/styleGuide/StyleGuide_Icons.jpg'],
-      arrayImg: true,
-      imgUrl: null,
+      imgShow: ['https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/ui/styleGuide/StyleGuide_Button_Variant.jpg', 'https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/ui/styleGuide/StyleGuide_Icons.jpg'],
       ulWidth: 0,
       allWidth: 0
     }
   },
   created () {
-    this.GET_UIUX()
+    this.GET_UI()
     this.GET_UX()
-    this.GET_PROTOTYPE()
     this.CheckScreen()
     window.addEventListener('resize', this.CheckScreen)
   },
   methods: {
-    ...mapActions(['GET_UIUX', 'GET_UX', 'GET_PROTOTYPE']),
+    ...mapActions(['GET_UI', 'GET_UX']),
     CheckScreen () {
       const ScreenWidth = window.innerWidth
       if (ScreenWidth > 744) {
@@ -57,12 +51,10 @@ export default {
     selectTab (item) {
       this.isActive = item.title
       this.imgShow = item.img
-      this.imgUrl = item.url
-      this.arrayImg = item.arrayImg
     }
   },
   computed: {
-    ...mapState(['uiuxFB', 'uxFB', 'prototypeFB']),
+    ...mapState(['uiFB', 'uxFB']),
     CalGalleryLeft () {
       return this.ulWidth
     },
