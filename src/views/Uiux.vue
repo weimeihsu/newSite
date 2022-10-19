@@ -2,11 +2,11 @@
   <section class="container" v-if="desktopView">
     <ul class="tabs-wrapper" ref="tabWrapper">
       <span class="label">User Interface</span>
-      <li v-for="(item, index) in uiFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
+      <li v-for="(item, index) in uiFB" :key="index" class="tab-item" :class="{ activeItem: activeTab === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
       <span class="label">User Journey</span>
-      <li v-for="(item, index) in uxFB" :key="index" class="tab-item" :class="{ activeItem: isActive === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
+      <li v-for="(item, index) in uxFB" :key="index" class="tab-item" :class="{ activeItem: activeTab === item.title }"  @click="selectTab(item)"><a>{{item.title}}</a></li>
     </ul>
-    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><img v-for="(img, index) in imgShow" :key="index" :src="img">
+    <div class="uiuxImg" :style="{width:CalGalleryWidth+'px', marginLeft:CalGalleryLeft+'px'}"><img v-for="(img, index) in activeImages" :key="index" :src="img">
     </div>
   </section>
 
@@ -26,8 +26,8 @@ export default {
     return {
       // default selected: 'UI Style Guide',
       desktopView: null,
-      isActive: 'UI Style Guide',
-      imgShow: ['https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/ui/styleGuide/StyleGuide_Button_Variant.jpg', 'https://raw.githubusercontent.com/weimeihsu/newSite/main/src/assets/img/uiux/ui/styleGuide/StyleGuide_Icons.jpg'],
+      isActive: '',
+      imgShow: [],
       ulWidth: 0,
       allWidth: 0
     }
@@ -60,6 +60,20 @@ export default {
     },
     CalGalleryWidth () {
       return this.allWidth - this.ulWidth
+    },
+    activeTab () {
+      if (this.isActive === '') {
+        return this.uiFB[0].title
+      } else {
+        return this.isActive
+      }
+    },
+    activeImages () {
+      if (this.isActive === '') {
+        return this.uiFB[0].img
+      } else {
+        return this.imgShow
+      }
     }
   },
   mounted () {
